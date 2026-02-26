@@ -1,0 +1,65 @@
+
+.menu-hero {
+  position: relative;
+  background: url("assets/banner/menu_banner.png") center/cover no-repeat;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-hero .overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+.menu-hero h1 span { color: #eeaf38; }
+
+
+
+.menu-card {
+  background: #fff;
+  transition: 0.3s;
+}
+.menu-card img {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+}
+.menu-card:hover {
+  transform: translateY(-5px);
+}
+.menu-card .price {
+  font-weight: bold;
+  color: #eeaf38;
+}
+
+
+.menu-card {
+  background: #fff;
+  transition: 0.3s;
+}
+.menu-card img {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+}
+.menu-card:hover {
+  transform: translateY(-5px);
+}
+.menu-card .price {
+  font-weight: bold;
+  color: #eeaf38;
+}
+.nav-pills .nav-link {
+  border-radius: 30px;
+  font-weight: 600;
+  color: #333;
+}
+.nav-pills .nav-link.active {
+  background: #eeaf38;
+  color: #fff;
+}
+
+.combo-card .price {
+  font-weight: bold;
+  color: #eeaf38;
+}

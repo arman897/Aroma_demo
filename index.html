@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aroma</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+        <!-- Font Awesome LInk -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS FIle -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="preloader-content">
+        <img src="assets/aroma_logo.webp" alt="Logo" />
+      </div>
+    </div>
+
+
+      <!-- Header -->
+<nav class="navbar navbar-expand-md sticky-top" style="background:#072025; height:80px">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand " href="#"><img class="header-logo" src="assets/aroma_logo.webp" alt=""></a>
+
+    <!-- Toggle Button (Mobile Only) -->
+    <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Inline Menu (Tablet & Desktop) -->
+    <div class="collapse navbar-collapse justify-content-end d-none d-md-flex">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="menu.html">Menu</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="about.html">Cateering & parties</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="contact.html">Contact</a></li>
+
+         <!-- Profile Icon -->
+    <li class="nav-item ms-3">
+      <a class="nav-link text-white" href="login.html">
+        <i class="fa-solid fa-user"></i>
+      </a>
+    </li>
+
+    <!-- Cart Icon -->
+    <li class="nav-item ms-2">
+      <a class="nav-link text-white position-relative" href="cart.html">
+  <i class="fa-solid fa-shopping-cart"></i>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    2
+  </span>
+</a>
+    </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas Menu (Right Side for Mobile) -->
+<div  style="width: 65%;" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Menu</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+      <li class="nav-item"><a class="nav-link" href="about.html">Cateering & parties</a></li>
+      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    <!-- 🔹 Sticky Header
+    <header class="app-header">
+      <a href="#">
+        <img src="assets/logo.png" alt="Logo" />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasMenu"
+      >
+        <i class="bi bi-list fs-1"></i>
+      </button>
+    </header> -->
+
+    <!-- 🔹 Offcanvas Menu -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Menu</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="d-block py-2 text-dark">Home</a></li>
+          <li><a href="menu.html" class="d-block py-2 text-dark">Menu</a></li>
+          <li><a href="about.html" class="d-block py-2 text-dark">About</a></li>
+          <li><a href="contact.html" class="d-block py-2 text-dark">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- sticky button for scrolling up -->
+     <button id="scrollTopBtn">
+  <i class="bi bi-airplane"></i>
+</button>
+
+    <!-- 🔹 Hero Banner Carousel with Search -->
+    <!-- 🔹 Hero Banner Carousel with Search & Text -->
+    <div
+      id="bannerCarousel"
+      class="carousel slide hero-banner"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="assets/banner/hero-img-4-1.png" alt="Banner 1" />
+          <div class="carousel-caption">
+            <h2>Enjoy <span>Free Delivery</span></h2>
+            <p>On all orders above $5.00</p>
+            <a href="menu.html" class="btn-banner">Order Now</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/banner/hero-img-4-2.png" alt="Banner 2" />
+          <div class="carousel-caption">
+            <h2>Hot & Fresh <span></span></h2>
+            <p>Delivered in under 30 minutes</p>
+            <a href="menu.html" class="btn-banner">Order Now</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/banner/hero-img-4-3.png" alt="Banner 3" />
+          <div class="carousel-caption">
+            <h2>Delicious <span>Biryani</span></h2>
+            <p>Cooked with authentic spices</p>
+            <a href="menu.html" class="btn-banner">Order Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#bannerCarousel"
+          data-bs-slide-to="0"
+          class="active"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#bannerCarousel"
+          data-bs-slide-to="1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#bannerCarousel"
+          data-bs-slide-to="2"
+        ></button>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#bannerCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#bannerCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon"></span>
+      </button>
+
+      <!-- Search Overlay -->
+      <div class="search-overlay">
+        <div class="search-bar">
+          <i class="bi bi-search me-2"></i>
+          <input type="text" placeholder="Restaurant name or a dish..." />
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔹 Sticky Category Bar -->
+  <!-- 🔹 Sticky Category Bar -->
+<div class="category-bar">
+  <div class="category-scroll">
+    <div class="category-item active" data-filter="all">
+      <img src="assets/sticky_header/1.png" alt="All" />
+      <span>All</span>
+    </div>
+
+    <div class="category-item" data-filter="biryani">
+      <img src="assets/sticky_header/2.png" alt="Biryani" />
+      <span>Biryani</span>
+    </div>
+
+    <div class="category-item" data-filter="kebab">
+      <img src="assets/sticky_header/4.png" alt="Kebab" />
+      <span>Kebab</span>
+    </div>
+
+    <div class="category-item" data-filter="curry">
+      <img src="assets/sticky_header/10.png" alt="Curry" />
+      <span>Curry</span>
+    </div>
+
+    <div class="category-item" data-filter="starters">
+      <img src="assets/sticky_header/8.png" alt="Starters" />
+      <span>Starters</span>
+    </div>
+
+    <div class="category-item" data-filter="pizza">
+      <img src="assets/sticky_header/5.png" alt="Pizza" />
+      <span>Pizza</span>
+    </div>
+
+    <div class="category-item" data-filter="burger">
+      <img src="assets/sticky_header/6.png" alt="Burger" />
+      <span>Burger</span>
+    </div>
+
+    <div class="category-item" data-filter="rolls">
+      <img src="assets/sticky_header/3.png" alt="Rolls" />
+      <span>Rolls</span>
+    </div>
+
+    <div class="category-item" data-filter="noodles">
+      <img src="assets/sticky_header/7.png" alt="Noodles" />
+      <span>Noodles</span>
+    </div>
+
+    <div class="category-item" data-filter="dessert">
+      <img src="assets/sticky_header/9.png" alt="Dessert" />
+      <span>Dessert</span>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const categoryItems = document.querySelectorAll(".category-item");
+  const dishes = document.querySelectorAll(".dish-item");
+
+  // 🔹 CATEGORY FILTER
+  categoryItems.forEach(item => {
+    item.addEventListener("click", function () {
+
+      categoryItems.forEach(i => i.classList.remove("active"));
+      this.classList.add("active");
+
+      const filter = this.getAttribute("data-filter");
+
+      dishes.forEach(dish => {
+        if (filter === "all" || dish.dataset.category === filter) {
+          dish.style.display = "block";
+        } else {
+          dish.style.display = "none";
+        }
+      });
+
+      // 🔹 Smooth scroll to menu
+      document.querySelector(".menu-section")
+        .scrollIntoView({ behavior: "smooth" });
+
+    });
+  });
+
+  // 🔹 ADD TO CART ANIMATION
+  const cartButtons = document.querySelectorAll(".add-cart-btn");
+
+  cartButtons.forEach(btn => {
+    btn.addEventListener("click", function () {
+
+      this.classList.add("added");
+      this.innerHTML = '<i class="bi bi-check-circle"></i> Added';
+
+      setTimeout(() => {
+        this.classList.remove("added");
+        this.innerHTML = '<i class="bi bi-cart-plus"></i> Add to Cart';
+      }, 1500);
+
+    });
+  });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 🔹 Menu Section -->
+   <!-- 🔹 Menu Section -->
+<section class="menu-section container py-5">
+  <h2 class="section-title text-center mb-4">Our <span>Menu</span></h2>
+  <div class="row g-4">
+
+    <!-- Dish 1 - Starters -->
+    <div class="col-md-4 col-sm-6 dish-item" data-category="starters">
+      <div class="dish-card">
+        <div id="dishCarousel1" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/dish card/1.png" class="d-block w-100" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/dish card/1.png" class="d-block w-100" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/dish card/1.png" class="d-block w-100" />
+            </div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <h5 class="dish-title">Samosa</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 2 - Rolls -->
+    <div class="col-md-4 col-sm-6 dish-item" data-category="rolls">
+      <div class="dish-card">
+        <div id="dishCarousel2" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/dish card/2.png" class="d-block w-100" />
+            </div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <h5 class="dish-title">Chicken Roll</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 3 - Noodles -->
+    <div class="col-md-4 col-sm-6 dish-item" data-category="noodles">
+      <div class="dish-card">
+        <div id="dishCarousel3" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/dish card/3.png" class="d-block w-100" />
+            </div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <h5 class="dish-title">Chicken Hakka Noodles</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 4 - Kebab -->
+    <div class="col-md-4 col-sm-6 dish-item" data-category="kebab">
+      <div class="dish-card">
+        <div id="dishCarousel4" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/dish card/4.png" class="d-block w-100" />
+            </div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <h5 class="dish-title">Chicken Seekh Kebab</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 5 - Starters -->
+    <div class="col-md-4 col-sm-6 dish-item" data-category="starters">
+      <div class="dish-card">
+        <div id="dishCarousel5" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/dish card/5.png" class="d-block w-100" />
+            </div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <h5 class="dish-title">Chicken Steamed Momo</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 6 - Starters -->
+    <div class="col-md-4 col-sm-6 dish-item" data-category="starters">
+      <div class="dish-card">
+        <div id="dishCarousel6" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/dish card/6.png" class="d-block w-100" />
+            </div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <h5 class="dish-title">Garlic Hot Wings</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 7 - Curry -->
+    <div class="col-md-4 col-sm-6 dish-item" data-category="curry">
+      <div class="dish-card">
+        <div id="dishCarousel7" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/dish card/7.png" class="d-block w-100" />
+            </div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <h5 class="dish-title">Mutton Rizala</h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dish 8 - Curry -->
+    <div class="col-md-4 col-sm-6 dish-item" data-category="curry">
+      <div class="dish-card">
+        <div id="dishCarousel8" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/dish card/8.png" class="d-block w-100" />
+            </div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <h5 class="dish-title">Malabar Fish</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- 🔹 Core Features Section -->
+    <section class="core-features py-5">
+      <div class="container">
+        <h2 class="text-center mb-5 text-white section-title">
+          CORE <span>FEATURES</span>
+        </h2>
+
+        <div class="row g-4">
+          <!-- Feature 1 -->
+          <div class="col-lg-4 col-md-6 d-flex">
+            <div class="feature-box text-center p-4 flex-fill">
+              <div class="feature-icon mb-3">
+                <i class="bi bi-egg-fried"></i>
+              </div>
+              <h5 class="feature-title">BEST QUALITY FOOD</h5>
+              <p class="feature-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut lab.
+              </p>
+              <a href="about.html" class="feature-link">Read More</a>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="col-lg-4 col-md-6 d-flex">
+            <div class="feature-box text-center p-4 flex-fill">
+              <div class="feature-icon mb-3">
+                <i class="bi bi-clock-history"></i>
+              </div>
+              <h5 class="feature-title">24/7 ON HOTEL</h5>
+              <p class="feature-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut lab.
+              </p>
+              <a href="about.html" class="feature-link">Read More</a>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="col-lg-4 col-md-6 d-flex">
+            <div class="feature-box text-center p-4 flex-fill">
+              <div class="feature-icon mb-3">
+                <i class="bi bi-telephone-inbound"></i>
+              </div>
+              <h5 class="feature-title">EASY TO ORDER</h5>
+              <p class="feature-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut lab.
+              </p>
+              <a href="about.html" class="feature-link">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔹 Client Feedback Section -->
+    <section class="client-feedback py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">What Our <span>Clients Say</span></h2>
+
+        <div
+          id="feedbackCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <!-- Feedback 1 -->
+            <div class="carousel-item active">
+              <div class="feedback-card text-center">
+                <img
+                  src="assets/testimonial/testimonial-author-2-11.png"
+                  class="client-img"
+                  alt="Client 1"
+                />
+                <p class="feedback-text">
+                  "Amazing service! The food was delivered hot and fresh. Highly
+                  recommended."
+                </p>
+                <h5>John Doe</h5>
+                <span>Businessman</span>
+              </div>
+            </div>
+
+            <!-- Feedback 2 -->
+            <div class="carousel-item">
+              <div class="feedback-card text-center">
+                <img
+                  src="assets/testimonial/testimonial-author-2-11.png"
+                  class="client-img"
+                  alt="Client 2"
+                />
+                <p class="feedback-text">
+                  "The taste is authentic and delicious. I will definitely order
+                  again."
+                </p>
+                <h5>Maria Smith</h5>
+                <span>Food Blogger</span>
+              </div>
+            </div>
+
+            <!-- Feedback 3 -->
+            <div class="carousel-item">
+              <div class="feedback-card text-center">
+                <img
+                  src="assets/testimonial/testimonial-author-2-11.png"
+                  class="client-img"
+                  alt="Client 3"
+                />
+                <p class="feedback-text">
+                  "Professional service and excellent packaging. Worth every
+                  penny!"
+                </p>
+                <h5>David Lee</h5>
+                <span>Chef</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#feedbackCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#feedbackCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
+
+          <!-- Indicators -->
+          <!-- <div class="carousel-indicators mt-3">
+        <button type="button" data-bs-target="#feedbackCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#feedbackCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#feedbackCarousel" data-bs-slide-to="2"></button>
+      </div> -->
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- 🔹 Page Content -->
+    <!-- <main class="container py-3">
+    <h5>Welcome to Our Restaurant</h5>
+    <p>Scroll down to view footer...</p>
+    <div style="height:400px"></div>
+  </main> -->
+  <section >
+  <div class="container">
+    <img src="assets/banner/banner.png" alt="Special Offer - Get 35% Off" class="img-fluid w-100">
+  </div>
+</section>
+   
+    <!-- 🔹 Team Section -->
+    <section class="team-section py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-4 text-black">
+          Our Experience <span>Chefs</span>
+        </h2>
+
+        <!-- Bootstrap Carousel -->
+        <div id="teamCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="row g-3">
+                <div class="col-md-4 col-sm-6">
+                  <div class="team-card">
+                    <img src="assets/team/team-img-2-12.png" alt="Chef 1" />
+                    <div  class="overlay">
+                      <h5>John Doe</h5>
+                      <p>Head Chef</p>
+                      <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 d-none d-sm-block">
+                  <div class="team-card">
+                    <img src="assets/team/team-img-2-12.png" alt="Chef 2" />
+                    <div  class="overlay">
+                      <h5>Maria Smith</h5>
+                      <p>Pastry Chef</p>
+                      <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 d-none d-md-block">
+                  <div class="team-card">
+                    <img src="assets/team/team-img-2-12.png" alt="Chef 3" />
+                    <div  class="overlay">
+                      <h5>David Lee</h5>
+                      <p>Sous Chef</p>
+                      <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+              <div class="row g-3">
+                <div class="col-md-4 col-sm-6">
+                  <div class="team-card">
+                    <img src="assets/team/team-img-2-13.png" alt="Chef 4" />
+                    <div  class="overlay">
+                      <h5>Emily Rose</h5>
+                      <p>Grill Chef</p>
+                      <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 d-none d-sm-block">
+                  <div class="team-card">
+                    <img src="assets/team/team-img-2-13.png" alt="Chef 5" />
+                    <div  class="overlay">
+                      <h5>Michael Chan</h5>
+                      <p>Seafood Expert</p>
+                      <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 d-none d-md-block">
+                  <div class="team-card">
+                    <img src="assets/team/team-img-2-13.png" alt="Chef 6" />
+                    <div  class="overlay">
+                      <h5>Sarah Khan</h5>
+                      <p>Pastry Artist</p>
+                      <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#teamCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#teamCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔹 Gallery Section -->
+    <section class="gallery-section py-5">
+      <div class="container">
+        <h2 class="section-title text-center mb-4">
+          Our Food <span>Gallery</span>
+        </h2>
+
+        <div class="row g-3">
+          <!-- Gallery Item -->
+          <div class="col-6">
+            <div class="gallery-card">
+              <img src="assets/gallery/gallery1.png" alt="Biryani" />
+              <div class="overlay">
+                <h5>Biryani Special</h5>
+                <p>Authentic Hyderabadi Biryani cooked with spices.</p>
+                <span class="price">₹299</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item -->
+          <div class="col-6">
+            <div class="gallery-card">
+              <img src="assets/gallery/gallery2.png" alt="Pizza" />
+              <div class="overlay">
+                <h5>Cheese Burst Pizza</h5>
+                <p>Loaded with cheese and fresh toppings.</p>
+                <span class="price">₹499</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item -->
+          <div class="col-6">
+            <div class="gallery-card">
+              <img src="assets/gallery/gallery3.png" alt="Burger" />
+              <div class="overlay">
+                <h5>Chicken Burger</h5>
+                <p>Juicy chicken patty with fresh veggies.</p>
+                <span class="price">₹199</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item -->
+          <div class="col-6">
+            <div class="gallery-card">
+              <img src="assets/gallery/gallery4.png" alt="Burger" />
+              <div class="overlay">
+                <h5>Chicken Burger</h5>
+                <p>Juicy chicken patty with fresh veggies.</p>
+                <span class="price">₹199</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item -->
+          <div class="col-6">
+            <div class="gallery-card">
+              <img src="assets/gallery/gallery5.png" alt="Burger" />
+              <div class="overlay">
+                <h5>Chicken Burger</h5>
+                <p>Juicy chicken patty with fresh veggies.</p>
+                <span class="price">₹199</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery Item -->
+          <div class="col-6">
+            <div class="gallery-card">
+              <img src="assets/gallery/gallery7.png" alt="Burger" />
+              <div class="overlay">
+                <h5>Chicken Burger</h5>
+                <p>Juicy chicken patty with fresh veggies.</p>
+                <span class="price">₹199</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more items as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔹 Reservation Section -->
+    <section class="reservation-section">
+      <div class="container">
+        <h2 class="section-title">
+          <span style="color: #fff">Make a </span><span>Reservation</span>
+        </h2>
+        <div class="row g-4">
+          <!-- Left Info -->
+          <div class="col-md-6">
+            <div class="reservation-box">
+              <h5><i class="bi bi-geo-alt-fill me-2"></i>Our Location</h5>
+              <p>9648 Red Stone Dr Indian Land, South Carolina 29707</p>
+
+              <h5><i class="bi bi-telephone-fill me-2"></i>Book a table</h5>
+              <p>Phone: (803) 547-3200<br />Fax: (803) 547-3200</p>
+
+              <h5><i class="bi bi-envelope-fill me-2"></i>E-mail Us</h5>
+              <p>Support: aromaindianland@gmail.com<br />Sales: aromaindianland@gmail.com</p>
+
+              <h5 class="mt-3">Follow Us</h5>
+              <div class="social-icons">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Form -->
+          <div class="col-md-6">
+            <div class="reservation-box">
+              <h5 class="text-center mb-3">Book a table Easily Online</h5>
+              <form>
+                <div class="mb-3 input-group">
+                  <input
+                    type="datetime-local"
+                    class="form-control"
+                    placeholder="Select Date & Time"
+                  />
+                  <!-- <span class="input-group-text"
+                    ><i class="bi bi-calendar-event"></i
+                  ></span> -->
+                </div>
+                <div class="mb-3 input-group">
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Person"
+                  />
+                  <span class="input-group-text"
+                    ><i class="bi bi-people"></i
+                  ></span>
+                </div>
+                <div class="mb-3 input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your Name"
+                  />
+                  <span class="input-group-text"
+                    ><i class="bi bi-person"></i
+                  ></span>
+                </div>
+                <div class="mb-3 input-group">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="Contact Number"
+                  />
+                  <span class="input-group-text"
+                    ><i class="bi bi-telephone"></i
+                  ></span>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                  Book Your Table
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- 🔹 Sticky Bottom Bar -->
+      <div class="sticky-bottom-bar">
+        <a href="tel:+917890927414" class="bar-btn call-btn">
+          <i class="bi bi-telephone-fill"></i> Call
+        </a>
+        <a
+          href="https://wa.me/917890927414"
+          target="_blank"
+          class="bar-btn whatsapp-btn"
+        >
+          <i class="bi bi-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    <!-- 🔹 Footer -->
+     <footer class="footer-section text-white">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <!-- About Section -->
+      <div class="col-md-4 mb-4">
+        <h4 class="footer-logo"><img src="assets/aroma_logo.webp" alt="Logo" /></h4>
+        <p>
+          Energetically repurpose client-based models rather than magnetic
+          sources. Intrinsically bricks-and-mortar ideas before.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Food Menu -->
+      <div class="col-md-4 mb-4">
+        <h5>Food Menu</h5>
+        <ul class="footer-menu">
+          <li><i class="bi bi-caret-right-fill"></i> Biryani</li>
+          <li><i class="bi bi-caret-right-fill"></i> Tandoori Kebabs</li>
+          <li><i class="bi bi-caret-right-fill"></i> Samosa</li>
+          <li><i class="bi bi-caret-right-fill"></i> Palak Paneer</li>
+          <li><i class="bi bi-caret-right-fill"></i> Dal Makhani</li>
+          <li><i class="bi bi-caret-right-fill"></i> Murgh Musallam</li>
+          <li><i class="bi bi-caret-right-fill"></i> Aloo Gobi</li>
+          <li><i class="bi bi-caret-right-fill"></i> Cappuccino Coffee</li>
+          <li><i class="bi bi-caret-right-fill"></i> Kadhai Mutton</li>
+          <li><i class="bi bi-caret-right-fill"></i> Fish Fry</li>
+        </ul>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="col-md-4 mb-4">
+        <h5>Contact Us</h5>
+        <ul class="footer-contact">
+          <li><i class="bi bi-geo-alt-fill"></i> 9648 Red Stone Dr Indian Land, South Carolina 29707</li>
+          <li><i class="bi bi-telephone-fill"></i> (803) 547-3200</li>
+          <li><i class="bi bi-envelope-fill"></i> aromaindianland@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-4">
+      <p class="mb-0">Copyright © 2022 Aroma - All rights reserved</p>
+    </div>
+  </div>
+</footer>
+
+      
+
+      <!-- <div class="footer-content container">
+        <div class="row">
+          About
+          <div class="col-md-3">
+            <h5>MEHMAN</h5>
+            <p>
+              Energetically repurpose client-based models rather than magnetic
+              sources. Intrinsically bricks-and-mortar ideas before.
+            </p>
+
+              <div class="container">
+            <h1>Social Media Icons</h1>
+            <div class="social-icons"></div>
+            <div class="icons-container">
+              <div class="icon-circle" data-name="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </div>
+              <div class="icon-circle" data-name="Twitter">
+                <i class="fab fa-twitter"></i>
+              </div>
+              <div class="icon-circle" data-name="Instagram">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div class="icon-circle" data-name="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div class="icon-circle" data-name="YouTube">
+                <i class="fab fa-youtube"></i>
+              </div>
+            </div>
+            </div>
+          </div>
+
+
+
+
+
+            <div class="social-icons">
+              <a style="vertical-align: 0.875em" href="#"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
+
+
+              
+
+          
+          
+
+          Food Menu
+          <div class="col-md-3">
+            <h5>Food Menu</h5>
+            <ul>
+              <li><i class="bi bi-caret-right-fill"></i>Biryani</li>
+              <li><i class="bi bi-caret-right-fill"></i>Tandoori Kebabs</li>
+              <li><i class="bi bi-caret-right-fill"></i>Samosa</li>
+              <li><i class="bi bi-caret-right-fill"></i>Palak Paneer</li>
+              <li><i class="bi bi-caret-right-fill"></i>Dal Makhani</li>
+              <li><i class="bi bi-caret-right-fill"></i>Murgh Musallam</li>
+              <li><i class="bi bi-caret-right-fill"></i>Aloo Gobi</li>
+              <li><i class="bi bi-caret-right-fill"></i>Cappuccino Coffee</li>
+              <li><i class="bi bi-caret-right-fill"></i>Kadhai Mutton</li>
+              <li><i class="bi bi-caret-right-fill"></i>Fish Fry</li>
+            </ul>
+          </div>
+
+          Contact Us
+          <div class="col-md-3">
+            <h5>Contact Us</h5>
+            <ul>
+              <li>
+                <i class="bi bi-geo-alt-fill"></i> XYZ, Street Kolkata West
+                Bengal 700014
+              </li>
+              <li><i class="bi bi-telephone-fill"></i> +91 95*******5</li>
+              <li>
+                <i class="bi bi-envelope-fill"></i> mehman.info@example.com
+              </li>
+            </ul>
+          </div>
+        </div> -->
+
+        <!-- <div class="copyright">
+          Copyright © 2022 Mehman - All rights reserved
+        </div>
+      </div>
+    </footer> -->
+
+    <!-- Java Script  FIle -->
+    <script src="script.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+    <!-- Ramzan Offer Modal -->
+<div class="modal fade" id="ramzanOfferModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4" style="border-radius:15px;">
+      
+      <div class="modal-header border-0">
+        <h4 class="modal-title w-100 fw-bold text-success">
+          🌙 Ramzan Special Offer
+        </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <img src="assets/ramzan-offer.jpg" class="img-fluid rounded mb-3" alt="Ramzan Offer">
+
+        <h5 class="fw-bold">Flat 20% OFF on Iftar Deals!</h5>
+        <p class="text-muted">
+          Enjoy delicious Iftar meals with family & friends.  
+          Offer valid till Chand Raat.
+        </p>
+
+        <a href="menu.html" class="btn btn-success px-4">
+          Order Now
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+  window.addEventListener("load", function () {
+    var ramzanModal = new bootstrap.Modal(document.getElementById('ramzanOfferModal'));
+    ramzanModal.show();
+  });
+</script>
+  </body>
+</html>
