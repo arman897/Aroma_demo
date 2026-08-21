@@ -1,0 +1,3746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Aroma Indian Grill & Bar | Premier Indian Dining Preview</title>
+  <meta name="description" content="Experience authentic royal Indian gastronomy at Aroma Indian Grill & Bar. Premium static preview for mobile and desktop display.">
+  <meta name="theme-color" content="#061518">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/curry.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- React & Babel CDNs -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      /* Royal Color Palette */
+      --bg-main: #061518;
+      --bg-card: rgba(13, 34, 39, 0.8);
+      --bg-card-hover: rgba(20, 52, 60, 0.9);
+      --bg-glass: rgba(10, 31, 36, 0.7);
+      --bg-glass-heavy: rgba(6, 21, 24, 0.95);
+      --bg-secondary: #0a2127;
+      --bg-surface: #0e2d35;
+
+      /* Accent Saffron & Gold */
+      --gold-primary: #f3bf37;
+      --gold-secondary: #d4af37;
+      --gold-light: #fbe69b;
+      --gold-glow: rgba(243, 191, 55, 0.35);
+      --saffron-orange: #ff7a18;
+      --saffron-glow: rgba(255, 122, 24, 0.4);
+      --ruby-red: #e63946;
+      --emerald-green: #10b981;
+
+      /* Text colors */
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-gold: #f3bf37;
+
+      /* Borders & Shadows */
+      --border-subtle: rgba(243, 191, 55, 0.15);
+      --border-glow: rgba(243, 191, 55, 0.45);
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.65);
+      --shadow-gold: 0 8px 30px rgba(243, 191, 55, 0.22);
+
+      /* Typography */
+      --font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
+      --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      /* Radii & Transitions */
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-full: 9999px;
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+      background-color: var(--bg-main);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      background-color: var(--bg-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 0;
+    }
+
+    /* Ambient Background Light Orbs */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -150px;
+      left: 10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(243, 191, 55, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -150px;
+      right: 10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(255, 122, 24, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-main);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg-surface);
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-secondary);
+    }
+
+    /* Typography styles */
+    h1, h2, h3, h4, .font-serif {
+      font-family: var(--font-serif);
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      font-weight: 700;
+    }
+
+    h5, h6, .font-display {
+      font-family: var(--font-display);
+    }
+
+    p {
+      color: var(--text-secondary);
+    }
+
+    /* Containers */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navbar styling */
+    .navbar-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(6, 21, 24, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all var(--transition-smooth);
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+    }
+
+    .brand-emblem-text {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gold-primary);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+      padding: 0.5rem 0;
+      letter-spacing: 0.03em;
+      transition: color var(--transition-fast);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold-light);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-primary), var(--saffron-orange));
+      transition: width var(--transition-smooth);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cart-toggle-btn {
+      position: relative;
+      background: rgba(243, 191, 55, 0.1);
+      border: 1px solid var(--border-subtle);
+      color: var(--gold-light);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+    }
+
+    .cart-toggle-btn:hover {
+      background: rgba(243, 191, 55, 0.25);
+      border-color: var(--gold-primary);
+      transform: translateY(-2px);
+    }
+
+    .cart-badge-count {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: linear-gradient(135deg, #ff7a18, #e63946);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(230, 57, 70, 0.5);
+      border: 2px solid var(--bg-main);
+      animation: pulseBadge 2s infinite;
+    }
+
+    @keyframes pulseBadge {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      border: 1px solid transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      user-select: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #fce07a 0%, #f3bf37 50%, #e59819 100%);
+      color: #051417;
+      box-shadow: var(--shadow-gold);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(243, 191, 55, 0.45);
+      background: linear-gradient(135deg, #ffffff 0%, #fce07a 50%, #f3bf37 100%);
+    }
+
+    .btn-outline-gold {
+      background: rgba(243, 191, 55, 0.06);
+      color: var(--gold-light);
+      border: 1px solid var(--gold-secondary);
+      backdrop-filter: blur(10px);
+    }
+    .btn-outline-gold:hover {
+      background: rgba(243, 191, 55, 0.18);
+      border-color: var(--gold-primary);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-glass);
+    }
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-subtle);
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-lg {
+      padding: 1.1rem 2.4rem;
+      font-size: 1.05rem;
+      border-radius: var(--radius-lg);
+    }
+
+    /* Sections */
+    .section {
+      padding: 6.5rem 0;
+      position: relative;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+    }
+    .section-tag {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold-primary);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      display: inline-block;
+    }
+    .section-title {
+      font-size: 2.6rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 0 5rem;
+      overflow: hidden;
+    }
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6, 21, 24, 0.4) 0%, rgba(6, 21, 24, 0.95) 85%, #061518 100%),
+                  radial-gradient(circle at 75% 35%, rgba(243, 191, 55, 0.1) 0%, transparent 60%);
+      z-index: 1;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 1.1rem;
+      background: rgba(243, 191, 55, 0.1);
+      border: 1px solid rgba(243, 191, 55, 0.3);
+      border-radius: var(--radius-full);
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.12;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title span.gold {
+      background: linear-gradient(135deg, #ffffff 0%, #fbe69b 50%, #f3bf37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      max-width: 580px;
+    }
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .hero-stat-item h3 {
+      font-size: 1.8rem;
+      color: var(--gold-primary);
+      margin-bottom: 0.2rem;
+    }
+    .hero-stat-item p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .hero-visual-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      padding: 1rem;
+      background: linear-gradient(145deg, rgba(243, 191, 55, 0.15), rgba(10, 33, 39, 0.8));
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+    .hero-image-box {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 440px;
+    }
+    .hero-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .hero-visual-card:hover .hero-image-box img {
+      transform: scale(1.04);
+    }
+    .hero-floating-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(6, 21, 24, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .badge-info h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+    }
+    .badge-info p {
+      font-size: 0.8rem;
+      color: var(--gold-light);
+    }
+
+    /* Quick Reservation Strip */
+    .quick-reserve-strip {
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      margin-top: -3.5rem;
+      position: relative;
+      z-index: 10;
+      box-shadow: var(--shadow-lg);
+    }
+    .quick-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .quick-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .quick-field label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .quick-field input, .quick-field select {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+    .quick-field input:focus, .quick-field select:focus {
+      border-color: var(--gold-primary);
+    }
+
+    /* Menu Cards & Grid */
+    .menu-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .category-tabs {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.8rem;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+    .category-tab {
+      white-space: nowrap;
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-full);
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .category-tab:hover {
+      background: var(--bg-surface);
+      color: #ffffff;
+      border-color: var(--border-subtle);
+    }
+    .category-tab.active {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: #051417;
+      border-color: transparent;
+      box-shadow: var(--shadow-gold);
+    }
+    .menu-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: var(--bg-glass);
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+    .search-input-box {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+    }
+    .search-input-box input {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-full);
+      padding: 0.65rem 1rem 0.65rem 2.6rem;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .search-input-box svg {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+    .dietary-filters {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .filter-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all var(--transition-fast);
+    }
+    .filter-chip.active {
+      background: rgba(243, 191, 55, 0.2);
+      border-color: var(--gold-primary);
+      color: var(--gold-light);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Individual Dish Card */
+    .menu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all var(--transition-smooth);
+      position: relative;
+    }
+    .menu-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-glow);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), var(--shadow-gold);
+    }
+    .menu-card-image-box {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+    }
+    .menu-card-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .menu-card:hover .menu-card-image-box img {
+      transform: scale(1.06);
+    }
+    .card-top-badges {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+      right: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+    }
+    .menu-card-content {
+      padding: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-header-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
+    .dish-name {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+    .dish-price {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      white-space: nowrap;
+    }
+    .dish-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .dish-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .dish-spice-meter {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .card-footer-actions {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.8rem;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .badge-gold {
+      background: rgba(243, 191, 55, 0.15);
+      color: var(--gold-light);
+      border: 1px solid rgba(243, 191, 55, 0.3);
+    }
+    .badge-veg {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .badge-nonveg {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .badge-special {
+      background: linear-gradient(135deg, rgba(255, 122, 24, 0.25), rgba(243, 191, 55, 0.25));
+      color: #ffb74d;
+      border: 1px solid rgba(255, 183, 77, 0.4);
+    }
+
+    /* Modal dialog overrides */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 13, 15, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 4500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .modal-dialog {
+      background: #092126;
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-xl);
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg), 0 0 50px rgba(243, 191, 55, 0.15);
+      position: relative;
+      animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      z-index: 10;
+    }
+    .modal-close-btn:hover {
+      background: rgba(230, 57, 70, 0.8);
+      transform: rotate(90deg);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes scaleUp {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Cart Drawer */
+    .cart-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 8, 10, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 3000;
+      display: flex;
+      justify-content: flex-end;
+      animation: fadeIn 0.25s ease;
+    }
+    .cart-drawer {
+      width: 100%;
+      max-width: 480px;
+      height: 100%;
+      background: #071c20;
+      border-left: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+      animation: slideLeft 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideLeft {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    .cart-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-items-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .cart-item-row {
+      display: flex;
+      gap: 1rem;
+      background: var(--bg-surface);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-glass);
+    }
+    .cart-item-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+    }
+    .cart-item-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cart-item-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.2rem;
+    }
+    .cart-qty-control {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .qty-btn:hover {
+      background: var(--gold-primary);
+      color: #000000;
+    }
+    .cart-footer {
+      padding: 1.5rem;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .cart-summary-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-secondary);
+    }
+    .cart-summary-line.total {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      border-top: 1px solid var(--border-glass);
+      padding-top: 0.8rem;
+      margin-top: 0.8rem;
+    }
+
+    /* Glass Cards */
+    .glass-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-smooth);
+    }
+    .glass-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Smart AI Chatbot Widget */
+    .chatbot-trigger-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 2500;
+      background: linear-gradient(135deg, #ff7a18 0%, #f3bf37 100%);
+      color: #051417;
+      border: none;
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(255, 122, 24, 0.45);
+      transition: all var(--transition-bounce);
+      animation: floatChat 4s ease-in-out infinite;
+    }
+    .chatbot-trigger-btn:hover {
+      transform: scale(1.08) translateY(-4px);
+      box-shadow: 0 12px 35px rgba(243, 191, 55, 0.6);
+    }
+    @keyframes floatChat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .chatbot-window {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 2rem;
+      width: 400px;
+      height: 580px;
+      max-width: calc(100vw - 2rem);
+      max-height: calc(100vh - 7rem);
+      background: #081d21;
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(243, 191, 55, 0.2);
+      z-index: 2500;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .chatbot-header {
+      background: linear-gradient(135deg, #0d343c 0%, #082126 100%);
+      padding: 1.1rem 1.4rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chat-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f3bf37, #ff7a18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 12px rgba(243, 191, 55, 0.5);
+    }
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .message-bubble {
+      max-width: 85%;
+      padding: 0.85rem 1.1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .message-bubble.assistant {
+      align-self: flex-start;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-glass);
+      border-bottom-left-radius: 4px;
+    }
+    .message-bubble.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #f3bf37 0%, #e59819 100%);
+      color: #061518;
+      font-weight: 500;
+      border-bottom-right-radius: 4px;
+    }
+    .chat-quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+    .quick-action-chip {
+      background: rgba(243, 191, 55, 0.12);
+      border: 1px solid rgba(243, 191, 55, 0.3);
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .quick-action-chip:hover {
+      background: rgba(243, 191, 55, 0.3);
+      color: #ffffff;
+    }
+    .chat-input-row {
+      padding: 0.9rem 1.2rem;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .chat-input-row input {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-full);
+      padding: 0.65rem 1rem;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .chat-send-btn {
+      background: var(--gold-primary);
+      color: #000;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .chat-send-btn:hover {
+      background: #ffffff;
+      transform: scale(1.08);
+    }
+
+    /* Order Tracking component */
+    .order-tracker-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .tracker-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      position: relative;
+      margin: 3rem 0 2rem;
+    }
+    .tracker-timeline::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 10%;
+      right: 10%;
+      height: 4px;
+      background: var(--bg-surface);
+      z-index: 1;
+    }
+    .tracker-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .step-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      transition: all var(--transition-smooth);
+    }
+    .tracker-step.completed .step-circle {
+      background: var(--emerald-green);
+      border-color: var(--emerald-green);
+      color: #ffffff;
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.5);
+    }
+    .tracker-step.active .step-circle {
+      background: var(--gold-primary);
+      border-color: var(--gold-primary);
+      color: #061518;
+      box-shadow: 0 0 20px var(--gold-primary);
+      animation: pulseStep 1.8s infinite;
+    }
+    @keyframes pulseStep {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Preloader */
+    .preloader-overlay {
+      position: fixed;
+      inset: 0;
+      background: #040e10;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .spinner-ring {
+      width: 60px;
+      height: 60px;
+      border: 3px solid transparent;
+      border-top-color: var(--gold-primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1.5rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Footer */
+    .footer {
+      background: #030d0f;
+      border-top: 1px solid var(--border-subtle);
+      padding: 5rem 0 2rem;
+      position: relative;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+    .footer-col h4 {
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.05em;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .footer-links a:hover {
+      color: var(--gold-primary);
+    }
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Mobile bottom navigation styles */
+    .mobile-bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: rgba(6, 21, 24, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-subtle);
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 4000;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+    }
+    .mobile-bottom-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      width: 20%;
+      position: relative;
+      transition: all var(--transition-fast);
+    }
+    .mobile-bottom-nav-item:focus {
+      outline: none;
+    }
+    .mobile-bottom-nav-item.active {
+      color: var(--gold-primary);
+    }
+    .mobile-bottom-nav-item svg {
+      margin-bottom: 0.15rem;
+      color: var(--text-muted);
+      transition: transform var(--transition-fast), color var(--transition-fast);
+    }
+    .mobile-bottom-nav-item.active svg {
+      transform: translateY(-2px);
+      color: var(--gold-primary);
+      filter: drop-shadow(0 0 5px rgba(243, 191, 55, 0.5));
+    }
+    .mobile-bottom-nav-item .badge-count {
+      position: absolute;
+      top: 1px;
+      right: calc(50% - 18px);
+      background: linear-gradient(135deg, #ff7a18, #e63946);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      min-width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--bg-main);
+      box-shadow: 0 2px 6px rgba(230, 57, 70, 0.4);
+    }
+
+    /* CSS Layout Guidelines: Media query adjustments & grid collapsing */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-subtitle {
+        margin: 0 auto 2rem;
+      }
+      .hero-cta-group {
+        justify-content: center;
+      }
+      .quick-strip-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      /* Collapse grids with fixed inline column fractions on tablets */
+      .about-grid, .contact-grid, .profile-grid, .catering-grid, .tour-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-wrapper {
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+        position: static !important;
+      }
+      .navbar-container {
+        display: none !important; /* Hide top navbar completely on mobile */
+      }
+      .nav-links {
+        display: none;
+      }
+      .desktop-only-btn {
+        display: none !important;
+      }
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      .quick-strip-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .chatbot-window {
+        width: 100%;
+        right: 0;
+        bottom: 64px;
+        height: calc(100vh - 64px);
+        max-height: calc(100vh - 64px);
+        border-radius: 0;
+      }
+      .chatbot-trigger-btn {
+        bottom: 5rem;
+        right: 1.2rem;
+      }
+
+      /* Full-screen modals on mobile */
+      .modal-backdrop {
+        padding: 0 !important;
+        background: rgba(4, 13, 15, 0.95);
+      }
+      .modal-dialog {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        border-radius: 0 !important;
+        border: none !important;
+        margin: 0 !important;
+        display: flex;
+        flex-direction: column;
+      }
+      .modal-close-btn {
+        top: 0.8rem;
+        right: 0.8rem;
+      }
+
+      /* Full-Width Cart Drawer */
+      .cart-drawer {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-left: none !important;
+      }
+
+      /* Force 1-column layouts on mobile */
+      .about-grid, .contact-grid, .profile-grid, .catering-grid, .tour-grid, .grid-2col {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+
+      .main-content-view {
+        padding-bottom: 76px !important;
+      }
+      
+      .section {
+        padding: 3.5rem 0;
+      }
+      .section-header {
+        margin-bottom: 2rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .mobile-bottom-nav {
+        display: flex;
+      }
+
+      /* Fix layout overlap and clipping by adjusting z-index layers */
+      .modal-backdrop {
+        z-index: 5000 !important;
+      }
+      .cart-drawer-overlay {
+        z-index: 5000 !important;
+      }
+      
+      /* Slide chatbot trigger up so it floats clean of bottom nav */
+      .chatbot-trigger-btn {
+        bottom: 5.2rem !important;
+        z-index: 3500 !important; /* Ensure it stays under modals */
+      }
+    }
+
+    /* Mobile Sidebar Overlay and Drawer Styles */
+    .mobile-sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 8, 10, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 4500; /* Above bottom navigation (4000) but below full screen modals (5000) */
+      display: flex;
+      justify-content: flex-end;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .mobile-sidebar-drawer {
+      width: 280px;
+      height: 100%;
+      background: #071c20;
+      border-left: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+      animation: slideLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 2.5rem 1.5rem;
+      position: relative;
+    }
+
+    .mobile-sidebar-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      transition: all var(--transition-fast);
+    }
+
+    .mobile-sidebar-close:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .mobile-sidebar-link {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .mobile-sidebar-link:hover,
+    .mobile-sidebar-link.active {
+      color: var(--gold-primary);
+      background: rgba(243, 191, 55, 0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Root App container for React mount -->
+  <div id="app-root"></div>
+
+  <!-- React code with Babel -->
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // --- Inline Icon Component for zero dependencies ---
+    const Icon = ({ name, size = 18, color = 'currentColor', className = '' }) => {
+      const icons = {
+        home: <g><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></g>,
+        flame: <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z"/>,
+        calendar: <g><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></g>,
+        shoppingbag: <g><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" x2="21" y1="6" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></g>,
+        user: <g><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>,
+        x: <g><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></g>,
+        send: <g><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></g>,
+        trash: <g><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></g>,
+        plus: <g><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></g>,
+        minus: <g><line x1="5" x2="19" y1="12" y2="12"/></g>,
+        shield: <g><path d="M20 13c0 5-3.5 7.5-7.66 9.7a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 .76-.97l7-2a1 1 0 0 1 .48 0l7 2A1 1 0 0 1 20 6v7z"/><path d="m9 12 2 2 4-4"/></g>,
+        logout: <g><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></g>,
+        clock: <g><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></g>,
+        mappin: <g><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></g>,
+        mail: <g><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></g>,
+        sparkles: <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>,
+        star: <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>,
+        arrowright: <g><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></g>,
+        phone: <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>,
+        check: <polyline points="20 6 9 17 4 12"/>,
+        checkcircle: <g><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>,
+        chefhat: <path d="M6 18V6a3 3 0 0 1 6 0v12M18 18V6a3 3 0 0 0-6 0v12M3 18h18"/>,
+        award: <g><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></g>,
+        utensils: <g><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v4"/><path d="M21 15V2v0a5 5 0 0 0-5 5v8c0 1.1.9 2 2 2h3Zm0 0v5h-3"/><line x1="12" x2="12" y1="15" y2="22"/></g>,
+        menu: <g><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></g>
+      };
+
+      const selectedPath = icons[name.toLowerCase()] || icons.star;
+
+      return (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={color}
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={className}
+        >
+          {selectedPath}
+        </svg>
+      );
+    };
+
+    // --- Mock Menu Dataset ---
+    const DEFAULT_MENU = [
+      { id: 1, name: "Old Delhi Butter Chicken", category: "curries", price: 17.99, desc: "Tender chicken tikka cooked in a velvety tomato, cream, and cashew butter sauce.", isChefSpecial: true, spiceLevel: 1, isVeg: false, isGlutenFree: true, image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80" },
+      { id: 2, name: "Royal Tandoori Lamb Chops", category: "sizzlers", price: 24.99, desc: "Lamb chops marinated for 48 hours in ginger, garlic, and home ground spices, grilled in tandoor oven.", isChefSpecial: true, spiceLevel: 2, isVeg: false, isGlutenFree: true, image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" },
+      { id: 3, name: "Saffron Lobster Dum Biryani", category: "biryanis", price: 28.99, desc: "Fragrant basmati rice layered with juicy lobster tails, saffron threads, and caramelized onions, dum cooked.", isChefSpecial: true, spiceLevel: 2, isVeg: false, isGlutenFree: false, image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80" },
+      { id: 4, name: "Amritsari Paneer Tikka Sizzler", category: "starters", price: 13.99, desc: "Artisan paneer cubes marinated in carom-infused yogurt, flame-grilled with bell peppers and Spanish onions.", isChefSpecial: true, spiceLevel: 2, isVeg: true, isGlutenFree: true, image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80" },
+      { id: 5, name: "Lassoni Gobi Manchurian", category: "starters", price: 11.99, desc: "Crispy cauliflower florets tossed in a tangy garlic-soy glaze, spring onions, and green chilies.", isChefSpecial: false, spiceLevel: 2, isVeg: true, isGlutenFree: false, image: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=600&q=80" },
+      { id: 6, name: "Vegetable Crispy Samosa (2 pcs)", category: "starters", price: 6.99, desc: "Flaky golden pastry stuffed with spiced potatoes, green peas, served with mint & tamarind chutneys.", isChefSpecial: false, spiceLevel: 1, isVeg: true, isGlutenFree: false, image: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=600&q=80" },
+      { id: 7, name: "Himalayan Lamb Rogan Josh", category: "curries", price: 21.99, desc: "Boneless lamb slow-cooked in a rich gravy flavored with Kashmiri chilies, fennel, and ginger.", isChefSpecial: false, spiceLevel: 2, isVeg: false, isGlutenFree: true, image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" },
+      { id: 8, name: "Royal Shahi Kaju Paneer", category: "curries", price: 16.99, desc: "Cottage cheese cubes simmered in a rich cashew-nut cream sauce, raisins, and exotic spices.", isChefSpecial: false, spiceLevel: 1, isVeg: true, isGlutenFree: true, image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80" },
+      { id: 9, name: "Hyderabadi Chicken Biryani", category: "biryanis", price: 18.99, desc: "Basmati rice dum cooked with bone-in chicken marinated in yogurt, mint, coriander, and biryani spices.", isChefSpecial: false, spiceLevel: 3, isVeg: false, isGlutenFree: true, image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80" },
+      { id: 10, name: "Garlic Butter Naan", category: "breads", price: 3.99, desc: "Freshly baked clay-oven flatbread brushed with garlic butter and fresh cilantro.", isChefSpecial: false, spiceLevel: 0, isVeg: true, isGlutenFree: false, image: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=600&q=80" },
+      { id: 11, name: "Peshawari Sweet Naan", category: "breads", price: 4.99, desc: "Clay oven naan stuffed with sweet almonds, pistachios, coconut flakes, and organic honey.", isChefSpecial: false, spiceLevel: 0, isVeg: true, isGlutenFree: false, image: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=600&q=80" },
+      { id: 12, name: "Mango Infused Rasmalai", category: "desserts", price: 7.99, desc: "Delicate cottage cheese discs soaked in cardamom, saffron, and sweet mango-infused milk.", isChefSpecial: false, spiceLevel: 0, isVeg: true, isGlutenFree: true, image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" },
+      { id: 13, name: "Gulab Jamun with Rabri", category: "desserts", price: 7.99, desc: "Warm milk dumplings in rose syrup served alongside thickened, saffron-infused milk cream (rabri).", isChefSpecial: false, spiceLevel: 0, isVeg: true, isGlutenFree: false, image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" },
+      { id: 14, name: "Aroma Saffron Old Fashioned", category: "drinks", price: 12.99, desc: "Aromatic premium bourbon, sweet saffron nectar, orange peel, and green cardamom bitters.", isChefSpecial: false, spiceLevel: 0, isVeg: true, isGlutenFree: true, image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=80" }
+    ];
+
+    // --- Main App Component ---
+    function App() {
+      // Base States
+      const [showPreloader, setShowPreloader] = useState(true);
+      const [activePage, setActivePage] = useState('home');
+      const [cart, setCart] = useState([]);
+      const [currentUser, setCurrentUser] = useState(null);
+      const [menuItems, setMenuItems] = useState(() => {
+        const saved = localStorage.getItem('aroma_preview_menu');
+        return saved ? JSON.parse(saved) : DEFAULT_MENU;
+      });
+
+      // Modals toggles
+      const [selectedItemForModal, setSelectedItemForModal] = useState(null);
+      const [isReservationModalOpen, setIsReservationModalOpen] = useState(false);
+      const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+      const [authModalMode, setAuthModalMode] = useState('login'); // 'login' | 'register'
+      const [isCartOpen, setIsCartOpen] = useState(false);
+      const [isSquareModalOpen, setIsSquareModalOpen] = useState(false);
+      const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+      // Input structures
+      const [quickDate, setQuickDate] = useState(new Date().toISOString().split('T')[0]);
+      const [quickGuests, setQuickGuests] = useState('2');
+      const [quickTime, setQuickTime] = useState('07:00 PM');
+      const [fulfillmentType, setFulfillmentType] = useState('pickup');
+      const [tipPercentage, setTipPercentage] = useState(18);
+      const [promoCode, setPromoCode] = useState('');
+      const [appliedPromo, setAppliedPromo] = useState(null);
+
+      // Contact form
+      const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
+
+      // User details for checkout
+      const [userCheckoutDetails, setUserCheckoutDetails] = useState({
+        name: '', email: '', phone: '', street: '', city: 'Indian Land', state: 'SC', zip: '29707', instructions: ''
+      });
+
+      // Local database logs
+      const [orders, setOrders] = useState(() => {
+        const saved = localStorage.getItem('aroma_preview_orders');
+        return saved ? JSON.parse(saved) : [
+          { orderId: '8093', createdAt: new Date(Date.now() - 3600000 * 24).toISOString(), status: 'delivered', total: 42.15, items: [{ name: 'Old Delhi Butter Chicken', quantity: 2, price: 17.99 }] },
+          { orderId: '8104', createdAt: new Date(Date.now() - 3600000 * 2).toISOString(), status: 'delivered', total: 28.98, items: [{ name: 'Royal Tandoori Lamb Chops', quantity: 1, price: 24.99 }] }
+        ];
+      });
+      const [reservations, setReservations] = useState(() => {
+        const saved = localStorage.getItem('aroma_preview_reservations');
+        return saved ? JSON.parse(saved) : [];
+      });
+      const [cateringInquiries, setCateringInquiries] = useState(() => {
+        const saved = localStorage.getItem('aroma_preview_catering');
+        return saved ? JSON.parse(saved) : [];
+      });
+      const [trackedOrderId, setTrackedOrderId] = useState(null);
+
+      // Chatbot states
+      const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+      const [messages, setMessages] = useState([
+        {
+          id: 'welcome-msg',
+          sender: 'assistant',
+          text: "Namaste! I am SpiceGuide AI, your Aroma culinary assistant. I can help recommend dishes by dietary restrictions (Vegan, Jain, 100% Halal, Gluten-Free), customize your meat or paneer protein choices, and assist with table bookings or royal catering.",
+          quickActions: [
+            "Chef's Top Recommendations",
+            "Choose Meat & Protein in Curries",
+            "Show Vegan & Vegetarian Dishes",
+            "Suggest Fiery Spicy Dishes",
+            "Reserve Table for Tonight",
+            "Inquire About Catering"
+          ]
+        }
+      ]);
+      const [chatInput, setChatInput] = useState('');
+      const [isChatbotTyping, setIsChatbotTyping] = useState(false);
+
+      // Toast states
+      const [toasts, setToasts] = useState([]);
+
+      // Auto scroll chatbot
+      const chatEndRef = useRef(null);
+
+      useEffect(() => {
+        if (isChatbotOpen) {
+          chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, [messages, isChatbotOpen]);
+
+      // Sync menu and states to localStorage
+      useEffect(() => {
+        localStorage.setItem('aroma_preview_menu', JSON.stringify(menuItems));
+      }, [menuItems]);
+      useEffect(() => {
+        localStorage.setItem('aroma_preview_orders', JSON.stringify(orders));
+      }, [orders]);
+      useEffect(() => {
+        localStorage.setItem('aroma_preview_reservations', JSON.stringify(reservations));
+      }, [reservations]);
+      useEffect(() => {
+        localStorage.setItem('aroma_preview_catering', JSON.stringify(cateringInquiries));
+      }, [cateringInquiries]);
+
+      // Sync User details
+      useEffect(() => {
+        if (currentUser) {
+          setUserCheckoutDetails(prev => ({
+            ...prev,
+            name: currentUser.name,
+            email: currentUser.email,
+            phone: currentUser.phone || '',
+            street: currentUser.address?.street || ''
+          }));
+        }
+      }, [currentUser]);
+
+      // Dismiss Preloader
+      useEffect(() => {
+        const timer = setTimeout(() => setShowPreloader(false), 2000);
+        return () => clearTimeout(timer);
+      }, []);
+
+      // Navigation handler
+      const navigateTo = (pageId) => {
+        setActivePage(pageId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      // Toast helper
+      const showToast = (text, type = 'success') => {
+        const id = Date.now();
+        setToasts(prev => [...prev, { id, text, type }]);
+        setTimeout(() => {
+          setToasts(prev => prev.filter(t => t.id !== id));
+        }, 3000);
+      };
+
+      // --- Cart Handlers ---
+      const handleAddToCart = (item, options) => {
+        setCart(prev => {
+          const exists = prev.find(i => 
+            i.id === item.id && 
+            i.selectedProtein === options.protein && 
+            i.spiceLevel === options.spiceLevel
+          );
+
+          if (exists) {
+            return prev.map(i => 
+              i.id === item.id && 
+              i.selectedProtein === options.protein && 
+              i.spiceLevel === options.spiceLevel
+                ? { ...i, quantity: i.quantity + options.quantity }
+                : i
+            );
+          }
+
+          return [...prev, {
+            ...item,
+            quantity: options.quantity,
+            selectedProtein: options.protein,
+            spiceLevel: options.spiceLevel,
+            notes: options.notes,
+            addonName: options.addonName,
+            addonPrice: options.addonPrice
+          }];
+        });
+        setSelectedItemForModal(null);
+        showToast(`${item.name} added to cart!`);
+      };
+
+      const handleUpdateQuantity = (idx, amount) => {
+        setCart(prev => prev.map((item, i) => {
+          if (i === idx) {
+            const nextQty = item.quantity + amount;
+            return nextQty > 0 ? { ...item, quantity: nextQty } : item;
+          }
+          return item;
+        }));
+      };
+
+      const handleRemoveFromCart = (idx) => {
+        setCart(prev => prev.filter((_, i) => i !== idx));
+        showToast('Item removed from cart', 'info');
+      };
+
+      // Cart Math
+      const subtotal = cart.reduce((acc, item) => acc + (item.price + (item.addonPrice || 0)) * item.quantity, 0);
+      const discount = appliedPromo ? subtotal * 0.15 : 0;
+      const tax = (subtotal - discount) * 0.0825;
+      const deliveryFee = fulfillmentType === 'delivery' ? 4.99 : 0;
+      const tipAmount = subtotal * (tipPercentage / 100);
+      const cartTotal = subtotal - discount + tax + deliveryFee + tipAmount;
+
+      const handleApplyPromo = (code) => {
+        if (code.trim().toUpperCase() === 'AROMA15') {
+          setAppliedPromo({ code: 'AROMA15', rate: 0.15 });
+          showToast('Promo code AROMA15 applied! 15% discount');
+        } else {
+          showToast('Invalid promo code. Try AROMA15', 'error');
+        }
+      };
+
+      const handleCheckoutSuccess = () => {
+        const orderId = String(Math.floor(1000 + Math.random() * 9000));
+        const newOrder = {
+          orderId,
+          createdAt: new Date().toISOString(),
+          status: 'order_received',
+          total: cartTotal,
+          items: cart.map(i => ({ name: i.name, quantity: i.quantity, price: i.price, selectedProtein: i.selectedProtein })),
+          customerEmail: currentUser?.email || userCheckoutDetails.email || 'guest@example.com',
+          customerName: currentUser?.name || userCheckoutDetails.name || 'Guest User'
+        };
+
+        setOrders(prev => [newOrder, ...prev]);
+        setCart([]);
+        setAppliedPromo(null);
+        setIsCartOpen(false);
+        setIsSquareModalOpen(false);
+        setTrackedOrderId(orderId);
+        navigateTo('track');
+        showToast('Payment successful! Order placed.');
+
+        // Trigger Confetti
+        if (window.confetti) {
+          window.confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+        }
+      };
+
+      // --- Reservations Handler ---
+      const handleBookTable = (e, formData) => {
+        e.preventDefault();
+        const bookingId = 'RES' + Math.floor(100 + Math.random() * 900);
+        const newReservation = {
+          id: bookingId,
+          date: formData.date || quickDate,
+          time: formData.time || quickTime,
+          guests: formData.guests || quickGuests,
+          ambiance: formData.ambiance || 'Romantic Candlelit Booth',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          status: 'pending_confirmation',
+          createdAt: new Date().toISOString()
+        };
+
+        setReservations(prev => [newReservation, ...prev]);
+        setIsReservationModalOpen(false);
+        showToast(`Table reserved! Reservation ID: ${bookingId}`);
+
+        if (window.confetti) {
+          window.confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+        }
+      };
+
+      // --- Catering Handler ---
+      const handleCateringInquiry = (e, formData) => {
+        e.preventDefault();
+        const inquiryId = 'CAT' + Math.floor(100 + Math.random() * 900);
+        const newInquiry = {
+          id: inquiryId,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          date: formData.date,
+          guests: formData.guests,
+          eventType: formData.eventType,
+          details: formData.details,
+          status: 'pending_proposal',
+          createdAt: new Date().toISOString()
+        };
+
+        setCateringInquiries(prev => [newInquiry, ...prev]);
+        showToast(`Inquiry submitted! ID: ${inquiryId}`);
+
+        if (window.confetti) {
+          window.confetti({ particleCount: 50, spread: 50 });
+        }
+      };
+
+      // --- Authentication Simulation ---
+      const handleLogin = (email, password) => {
+        if (email.includes('admin')) {
+          setCurrentUser({ name: 'Admin Executive', email: 'admin@aromaindiangrill.com', phone: '(803) 547-3200', role: 'admin' });
+          showToast('Welcome back, Admin Panel access enabled!');
+        } else {
+          setCurrentUser({ name: 'Priya Sharma', email: email || 'priya@example.com', phone: '(803) 555-0199', role: 'customer', address: { street: '9648 Red Stone Dr', city: 'Indian Land', state: 'SC', zip: '29707' } });
+          showToast('Welcome back, Priya!');
+        }
+        setIsAuthModalOpen(false);
+      };
+
+      const handleRegister = (details) => {
+        setCurrentUser({ name: details.name, email: details.email, phone: details.phone, role: 'customer', address: { street: details.street, city: 'Indian Land', state: 'SC', zip: '29707' } });
+        showToast('Account registered successfully! code AROMA15 added.');
+        setIsAuthModalOpen(false);
+      };
+
+      const handleLogout = () => {
+        setCurrentUser(null);
+        showToast('Signed out successfully.');
+        navigateTo('home');
+      };
+
+      // --- Conversational Chatbot replies ---
+      const handleChatbotSend = (userText) => {
+        const text = userText || chatInput;
+        if (!text.trim()) return;
+
+        const userMsg = { id: `u-${Date.now()}`, sender: 'user', text };
+        setMessages(prev => [...prev, userMsg]);
+        setChatInput('');
+        setIsChatbotTyping(true);
+
+        setTimeout(() => {
+          let reply = "At Aroma Indian Grill & Bar, our master chefs recommend our 48-Hour Marinated Royal Lamb Chops and Old Delhi Butter Chicken. You can explore the digital menu and place an order directly!";
+          let suggestedItems = [];
+
+          const query = text.toLowerCase();
+          if (query.includes('specials') || query.includes('chef') || query.includes('recommend')) {
+            reply = "Here are our Signature specials: the 48-Hour Marinated Lamb Chops and the creamy Old Delhi Butter Chicken. You can add them straight to your cart!";
+            suggestedItems = menuItems.filter(i => i.isChefSpecial);
+          } else if (query.includes('vegan') || query.includes('vegetarian') || query.includes('veg')) {
+            reply = "We offer a wide range of vegetarian and vegan delicacies, including our Amritsari Paneer Tikka and Gobi Manchurian. We also source Halal meats for non-veg dishes.";
+            suggestedItems = menuItems.filter(i => i.isVeg).slice(0, 3);
+          } else if (query.includes('reserve') || query.includes('book') || query.includes('table')) {
+            reply = "Sure! You can book a table for tonight. Would you like me to open the reservation window?";
+            reply = "I've loaded the Table Reservation panel for you. Please choose a slot!";
+            setIsReservationModalOpen(true);
+          } else if (query.includes('catering') || query.includes('event') || query.includes('party')) {
+            reply = "We offer luxury catering services for weddings, corporate galas, and family parties. I've switched your page to our Catering screen where you can submit an inquiry.";
+            navigateTo('catering');
+          } else if (query.includes('hours') || query.includes('open') || query.includes('time')) {
+            reply = "We are open Monday to Thursday: 11:30 AM - 10:00 PM. Friday & Saturday: 11:30 AM - 10:30 PM. Sunday: 11:30 AM - 9:30 PM.";
+          } else if (query.includes('spicy') || query.includes('hot') || query.includes('fiery')) {
+            reply = "If you like it hot, try our fiery Hyderabadi Chicken Biryani! You can customize the spice level up to 'Extra Hot' on all curries.";
+            suggestedItems = menuItems.filter(i => i.spiceLevel >= 3).slice(0, 2);
+          }
+
+          setMessages(prev => [...prev, {
+            id: `a-${Date.now()}`,
+            sender: 'assistant',
+            text: reply,
+            suggestedItems,
+            quickActions: ["Chef's Specials", "Reserve Table", "Today's Hours"]
+          }]);
+          setIsChatbotTyping(false);
+        }, 800);
+      };
+
+      return (
+        <div className="app-layout">
+          {/* Preloader */}
+          {showPreloader && (
+            <div className="preloader-overlay">
+              <div className="spinner-ring"></div>
+              <h2 style={{ fontFamily: 'var(--font-serif)', color: '#fff', letterSpacing: '0.12em' }}>AROMA</h2>
+              <p style={{ fontSize: '0.8rem', color: 'var(--gold-primary)', textTransform: 'uppercase', letterSpacing: '0.2em', marginTop: '0.3rem' }}>Royal Indian Gastronomy</p>
+            </div>
+          )}
+
+          {/* Toast Notification Container */}
+          <div style={{ position: 'fixed', top: '1.5rem', right: '1.5rem', zIndex: 5000, display: 'flex', flexDirection: 'column', gap: '0.6rem', maxWidth: '340px' }}>
+            {toasts.map(t => (
+              <div key={t.id} style={{
+                background: t.type === 'error' ? '#ef4444' : t.type === 'info' ? '#3b82f6' : 'linear-gradient(135deg, #092c34 0%, #051417 100%)',
+                color: '#fff',
+                border: t.type === 'error' ? 'none' : '1px solid var(--border-glow)',
+                padding: '0.9rem 1.3rem',
+                borderRadius: 'var(--radius-md)',
+                boxShadow: 'var(--shadow-md)',
+                fontSize: '0.88rem',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                animation: 'scaleUp 0.25s'
+              }}>
+                <Icon name={t.type === 'error' ? 'x' : 'checkcircle'} size={16} color="var(--gold-primary)" />
+                <span>{t.text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Header */}
+          <nav className="navbar-wrapper">
+            <div className="container navbar-container">
+              <a href="#home" className="navbar-brand" onClick={(e) => { e.preventDefault(); navigateTo('home'); }}>
+                <span className="brand-emblem-text">
+                  <Icon name="chefhat" size={26} color="var(--gold-primary)" /> AROMA
+                </span>
+              </a>
+
+              <ul className="nav-links">
+                <li><button className={`nav-link ${activePage === 'home' ? 'active' : ''}`} onClick={() => navigateTo('home')}>Home</button></li>
+                <li><button className={`nav-link ${activePage === 'menu' ? 'active' : ''}`} onClick={() => navigateTo('menu')}>Menu & Order</button></li>
+                <li><button className="nav-link" onClick={() => setIsReservationModalOpen(true)}>Reserve Table</button></li>
+                <li><button className={`nav-link ${activePage === 'catering' ? 'active' : ''}`} onClick={() => navigateTo('catering')}>Catering</button></li>
+                <li><button className={`nav-link ${activePage === 'about' ? 'active' : ''}`} onClick={() => navigateTo('about')}>Our Story</button></li>
+                <li><button className={`nav-link ${activePage === 'contact' ? 'active' : ''}`} onClick={() => navigateTo('contact')}>Contact</button></li>
+              </ul>
+
+              <div className="nav-actions">
+                {currentUser?.role === 'admin' && (
+                  <button className="btn btn-outline-gold btn-sm desktop-only-btn" onClick={() => navigateTo('admin')}>
+                    <Icon name="shield" size={14} /> Admin
+                  </button>
+                )}
+
+                {currentUser ? (
+                  <button className="btn btn-secondary btn-sm" onClick={() => navigateTo('profile')}>
+                    <Icon name="user" size={14} color="var(--gold-primary)" /> <span>Profile</span>
+                  </button>
+                ) : (
+                  <button className="btn btn-secondary btn-sm" onClick={() => { setAuthModalMode('login'); setIsAuthModalOpen(true); }}>
+                    <Icon name="user" size={14} /> <span>Sign In</span>
+                  </button>
+                )}
+
+                <button className="btn btn-gold btn-sm desktop-only-btn" onClick={() => navigateTo('menu')}>
+                  Order Now
+                </button>
+
+                <button className="cart-toggle-btn" onClick={() => setIsCartOpen(true)} aria-label="View Shopping Cart">
+                  <Icon name="shoppingbag" size={20} color="var(--gold-primary)" />
+                  {cart.length > 0 && (
+                    <span className="cart-badge-count">{cart.reduce((acc, i) => acc + i.quantity, 0)}</span>
+                  )}
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          {/* Dynamic Page Views */}
+          <main className="main-content-view">
+            {activePage === 'home' && (
+              <HomeView
+                navigateTo={navigateTo}
+                menuItems={menuItems}
+                setSelectedItemForModal={setSelectedItemForModal}
+                setIsReservationModalOpen={setIsReservationModalOpen}
+                setQuickDate={setQuickDate}
+                setQuickGuests={setQuickGuests}
+                setQuickTime={setQuickTime}
+              />
+            )}
+
+            {activePage === 'menu' && (
+              <MenuView
+                menuItems={menuItems}
+                setSelectedItemForModal={setSelectedItemForModal}
+              />
+            )}
+
+            {activePage === 'catering' && (
+              <CateringView handleCateringInquiry={handleCateringInquiry} />
+            )}
+
+            {activePage === 'about' && (
+              <AboutView navigateTo={navigateTo} />
+            )}
+
+            {activePage === 'contact' && (
+              <ContactView />
+            )}
+
+            {activePage === 'profile' && (
+              <ProfileView
+                currentUser={currentUser}
+                orders={orders}
+                handleLogout={handleLogout}
+                navigateTo={navigateTo}
+              />
+            )}
+
+            {activePage === 'track' && (
+              <OrderTrackingView
+                orderId={trackedOrderId}
+                orders={orders}
+                navigateTo={navigateTo}
+              />
+            )}
+
+            {activePage === 'admin' && (
+              <AdminDashboardView
+                orders={orders}
+                setOrders={setOrders}
+                reservations={reservations}
+                setReservations={setReservations}
+                cateringInquiries={cateringInquiries}
+                setCateringInquiries={setCateringInquiries}
+                menuItems={menuItems}
+                setMenuItems={setMenuItems}
+                showToast={showToast}
+              />
+            )}
+          </main>
+
+          {/* Footer */}
+          <footer className="footer">
+            <div className="container footer-grid">
+              <div className="footer-col">
+                <h4 style={{ fontFamily: 'var(--font-serif)', color: '#fff', fontSize: '1.35rem', marginBottom: '1rem' }}>AROMA</h4>
+                <p style={{ fontSize: '0.88rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>Experience the ultimate royalty in Indian gastronomy. Clay oven tandoors, rich slow-simmered gravies, and premium spices.</p>
+                <div style={{ display: 'flex', gap: '0.8rem' }}>
+                  <span className="badge badge-gold">Indian Land, SC</span>
+                  <span className="badge badge-gold">Charlotte Area</span>
+                </div>
+              </div>
+
+              <div className="footer-col">
+                <h4>Explore</h4>
+                <ul className="footer-links">
+                  <li><a href="#menu" onClick={(e) => { e.preventDefault(); navigateTo('menu'); }}>Our Digital Menu</a></li>
+                  <li><a href="#book" onClick={(e) => { e.preventDefault(); setIsReservationModalOpen(true); }}>Book Table</a></li>
+                  <li><a href="#catering" onClick={(e) => { e.preventDefault(); navigateTo('catering'); }}>Luxury Catering</a></li>
+                  <li><a href="#story" onClick={(e) => { e.preventDefault(); navigateTo('about'); }}>Our Heritage</a></li>
+                </ul>
+              </div>
+
+              <div className="footer-col">
+                <h4>Hours & Contact</h4>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Mon - Thu: 11:30 AM - 10:00 PM</p>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Fri - Sat: 11:30 AM - 10:30 PM</p>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>Sunday: 11:30 AM - 9:30 PM</p>
+                <a href="tel:8035473200" style={{ color: 'var(--gold-primary)', fontWeight: 600, fontSize: '0.9rem' }}>(803) 547-3200</a>
+              </div>
+
+              <div className="footer-col">
+                <h4>Locate Us</h4>
+                <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>9648 Red Stone Dr<br />Indian Land, SC 29707</p>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Directly adjacent to Red Stone Theater complex, free parking available.</p>
+              </div>
+            </div>
+
+            <div className="container footer-bottom">
+              <p>&copy; {new Date().getFullYear()} Aroma Indian Grill & Bar. All rights reserved.</p>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <a href="#privacy" style={{ color: 'var(--text-muted)' }}>Privacy Policy</a>
+                <a href="#terms" style={{ color: 'var(--text-muted)' }}>Terms of Service</a>
+              </div>
+            </div>
+          </footer>
+
+          {/* Custom Modals */}
+          {selectedItemForModal && (
+            <ItemModal
+              item={selectedItemForModal}
+              onClose={() => setSelectedItemForModal(null)}
+              handleAddToCart={handleAddToCart}
+            />
+          )}
+
+          <ReservationModal
+            isOpen={isReservationModalOpen}
+            onClose={() => setIsReservationModalOpen(false)}
+            handleBook={handleBookTable}
+            quickDate={quickDate}
+            quickGuests={quickGuests}
+            quickTime={quickTime}
+          />
+
+          <AuthModal
+            isOpen={isAuthModalOpen}
+            onClose={() => setIsAuthModalOpen(false)}
+            mode={authModalMode}
+            setMode={setAuthModalMode}
+            handleLogin={handleLogin}
+            handleRegister={handleRegister}
+          />
+
+          {isCartOpen && (
+            <CartDrawer
+              cart={cart}
+              onClose={() => setIsCartOpen(false)}
+              handleUpdateQuantity={handleUpdateQuantity}
+              handleRemoveFromCart={handleRemoveFromCart}
+              subtotal={subtotal}
+              discount={discount}
+              tax={tax}
+              deliveryFee={deliveryFee}
+              tipPercentage={tipPercentage}
+              setTipPercentage={setTipPercentage}
+              tipAmount={tipAmount}
+              cartTotal={cartTotal}
+              promoCode={promoCode}
+              setPromoCode={setPromoCode}
+              handleApplyPromo={handleApplyPromo}
+              appliedPromo={appliedPromo}
+              fulfillmentType={fulfillmentType}
+              setFulfillmentType={setFulfillmentType}
+              userDetails={userCheckoutDetails}
+              setUserDetails={setUserCheckoutDetails}
+              handleCheckoutTrigger={() => setIsSquareModalOpen(true)}
+            />
+          )}
+
+          {isSquareModalOpen && (
+            <SquarePaymentModal
+              total={cartTotal}
+              onClose={() => setIsSquareModalOpen(false)}
+              onSuccess={handleCheckoutSuccess}
+            />
+          )}
+
+          {/* AI Chatbot Concierge */}
+          <div className="chatbot-trigger-btn" onClick={() => setIsChatbotOpen(!isChatbotOpen)}>
+            <Icon name="flame" size={18} color="#051417" />
+            <span>Chat AI</span>
+          </div>
+
+          {isChatbotOpen && (
+            <div className="chatbot-window">
+              <div className="chatbot-header">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <div className="chat-avatar">
+                    <Icon name="chefhat" size={18} color="#061518" />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: '0.95rem', color: '#fff' }}>SpiceGuide AI</h4>
+                    <span style={{ fontSize: '0.72rem', color: 'var(--emerald-green)', fontWeight: 600 }}>● Culinary Concierge Online</span>
+                  </div>
+                </div>
+                <button onClick={() => setIsChatbotOpen(false)} style={{ background: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }}>
+                  <Icon name="x" size={18} />
+                </button>
+              </div>
+
+              <div className="chat-messages">
+                {messages.map(m => (
+                  <div key={m.id} className={`message-bubble ${m.sender}`}>
+                    <p style={{ color: m.sender === 'user' ? '#051417' : 'inherit' }}>{m.text}</p>
+                    {m.suggestedItems && m.suggestedItems.length > 0 && (
+                      <div style={{ marginTop: '0.8rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {m.suggestedItems.map(item => (
+                          <div key={item.id} style={{ background: 'rgba(0,0,0,0.3)', padding: '0.5rem', borderRadius: '6px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
+                            <span>{item.name} (${item.price})</span>
+                            <button className="btn btn-gold btn-sm" style={{ padding: '0.2rem 0.6rem', fontSize: '0.75rem' }} onClick={() => setSelectedItemForModal(item)}>Customize</button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {m.quickActions && (
+                      <div className="chat-quick-actions">
+                        {m.quickActions.map((act, i) => (
+                          <button key={i} className="quick-action-chip" onClick={() => handleChatbotSend(act)}>{act}</button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {isChatbotTyping && <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>SpiceGuide is planning recommendations...</p>}
+                <div ref={chatEndRef} />
+              </div>
+
+              <div className="chat-input-row">
+                <input
+                  type="text"
+                  placeholder="Ask about Vegan options, Gluten-free..."
+                  value={chatInput}
+                  onChange={e => setChatInput(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && handleChatbotSend()}
+                />
+                <button className="chat-send-btn" onClick={() => handleChatbotSend()}>
+                  <Icon name="send" size={16} color="#051417" />
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Mobile Sidebar Navigation Drawer */}
+          {isMobileMenuOpen && (
+            <div className="mobile-sidebar-overlay" onClick={() => setIsMobileMenuOpen(false)}>
+              <div className="mobile-sidebar-drawer" onClick={(e) => e.stopPropagation()}>
+                <button
+                  className="mobile-sidebar-close"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <Icon name="x" size={24} />
+                </button>
+
+                <div className="brand-emblem-text" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem', fontSize: '1.4rem', fontFamily: 'var(--font-serif)', color: 'var(--gold-primary)' }}>
+                  <Icon name="flame" size={22} color="var(--gold-primary)" /> AROMA
+                </div>
+
+                <div className="mobile-sidebar-links">
+                  <button className={`mobile-sidebar-link ${activePage === 'home' ? 'active' : ''}`} onClick={() => { navigateTo('home'); setIsMobileMenuOpen(false); }}>
+                    <Icon name="home" size={18} />
+                    <span>Home</span>
+                  </button>
+                  <button className={`mobile-sidebar-link ${activePage === 'menu' ? 'active' : ''}`} onClick={() => { navigateTo('menu'); setIsMobileMenuOpen(false); }}>
+                    <Icon name="utensils" size={18} />
+                    <span>Menu & Order</span>
+                  </button>
+                  <button className="mobile-sidebar-link" onClick={() => { setIsReservationModalOpen(true); setIsMobileMenuOpen(false); }}>
+                    <Icon name="calendar" size={18} />
+                    <span>Book Table</span>
+                  </button>
+                  <button className={`mobile-sidebar-link ${activePage === 'catering' ? 'active' : ''}`} onClick={() => { navigateTo('catering'); setIsMobileMenuOpen(false); }}>
+                    <Icon name="flame" size={18} />
+                    <span>Catering & Events</span>
+                  </button>
+                  <button className={`mobile-sidebar-link ${activePage === 'about' ? 'active' : ''}`} onClick={() => { navigateTo('about'); setIsMobileMenuOpen(false); }}>
+                    <Icon name="user" size={18} />
+                    <span>Our Story</span>
+                  </button>
+                  <button className={`mobile-sidebar-link ${activePage === 'contact' ? 'active' : ''}`} onClick={() => { navigateTo('contact'); setIsMobileMenuOpen(false); }}>
+                    <Icon name="phone" size={18} />
+                    <span>Contact Us</span>
+                  </button>
+
+                  <div style={{ height: '1px', background: 'var(--border-glass)', margin: '1rem 0' }} />
+
+                  {currentUser?.role === 'admin' && (
+                    <button className="mobile-sidebar-link" onClick={() => { navigateTo('admin'); setIsMobileMenuOpen(false); }}>
+                      <Icon name="shield" size={18} />
+                      <span>Admin Dashboard</span>
+                    </button>
+                  )}
+
+                  {currentUser ? (
+                    <>
+                      <button className="mobile-sidebar-link" onClick={() => { navigateTo('profile'); setIsMobileMenuOpen(false); }}>
+                        <Icon name="user" size={18} color="var(--gold-primary)" />
+                        <span>My Account ({currentUser.name.split(' ')[0]})</span>
+                      </button>
+                      <button className="mobile-sidebar-link" onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }} style={{ color: '#ef4444' }}>
+                        <Icon name="logout" size={18} />
+                        <span>Sign Out</span>
+                      </button>
+                    </>
+                  ) : (
+                    <button className="mobile-sidebar-link" onClick={() => { setIsMobileMenuOpen(false); setAuthModalMode('login'); setIsAuthModalOpen(true); }}>
+                      <Icon name="user" size={18} />
+                      <span>Sign In / Register</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Mobile Bottom Navigation Bar */}
+          <div className="mobile-bottom-nav">
+            <button className={`mobile-bottom-nav-item ${activePage === 'home' ? 'active' : ''}`} onClick={() => navigateTo('home')}>
+              <Icon name="home" size={20} />
+              <span>Home</span>
+            </button>
+
+            <button className={`mobile-bottom-nav-item ${activePage === 'menu' ? 'active' : ''}`} onClick={() => navigateTo('menu')}>
+              <Icon name="utensils" size={20} />
+              <span>Menu</span>
+            </button>
+
+            <button className="mobile-bottom-nav-item" onClick={() => setIsReservationModalOpen(true)}>
+              <Icon name="calendar" size={20} />
+              <span>Book</span>
+            </button>
+
+            <button className="mobile-bottom-nav-item" onClick={() => setIsCartOpen(true)}>
+              <Icon name="shoppingbag" size={20} />
+              {cart.length > 0 && (
+                <span className="badge-count">{cart.reduce((a, i) => a + i.quantity, 0)}</span>
+              )}
+              <span>Cart</span>
+            </button>
+
+            <button className={`mobile-bottom-nav-item ${isMobileMenuOpen ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+              <Icon name="menu" size={20} />
+              <span>More</span>
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    // --- Sub-View: Home Screen ---
+    function HomeView({ navigateTo, menuItems, setSelectedItemForModal, setIsReservationModalOpen, setQuickDate, setQuickGuests, setQuickTime }) {
+      const specials = menuItems.filter(item => item.isChefSpecial);
+      const [tourIndex, setTourIndex] = useState(0);
+
+      const spices = [
+        { name: "Kashmiri Lal Mirch", origin: "Kashmir Valley", desc: "Vibrant red chili with mild heat and rich smoky flavor, essential for lamb curry.", heat: "🌶️🌶️" },
+        { name: "Green Cardamom (Elaichi)", origin: "Kerala Ghats", desc: "Sweet, highly aromatic pods, crushed freshly into kormas and warm saffron dessert milks.", heat: "None" },
+        { name: "Nagkeshar (Ceylon Mace)", origin: "Coastal Trails", desc: "Warm nutmeg-like floral spice roasted into our tandoori marinades for complex aroma.", heat: "🌶️" }
+      ];
+
+      return (
+        <div className="home-page">
+          <section className="hero-section">
+            <div className="hero-bg-overlay"></div>
+            <div className="container">
+              <div className="hero-grid">
+                <div>
+                  <div className="hero-pill">
+                    <Icon name="sparkles" size={13} color="var(--gold-primary)" />
+                    <span>Royal Indian Dining • Indian Land, SC</span>
+                  </div>
+                  <h1 className="hero-title">
+                    The AROMA of Care & <br />
+                    <span className="gold">Happiness Served Fresh</span>
+                  </h1>
+                  <p className="hero-subtitle">
+                    Proudly the largest Indian Restaurant in Greater Charlotte. Immerse your senses in 48-hour clay oven lamb sizzlers, slow-cooked kormas, fragrant dum biryanis, and bespoke cocktails.
+                  </p>
+                  <div className="hero-cta-group">
+                    <button className="btn btn-gold btn-lg" onClick={() => navigateTo('menu')}>
+                      <Icon name="flame" size={16} /> Explore Menu
+                    </button>
+                    <button className="btn btn-outline-gold btn-lg" onClick={() => setIsReservationModalOpen(true)}>
+                      <Icon name="calendar" size={16} /> Reserve Table
+                    </button>
+                  </div>
+                  <div className="hero-stats-row">
+                    <div className="hero-stat-item">
+                      <h3>48-Hour</h3>
+                      <p>Spice Marination</p>
+                    </div>
+                    <div className="hero-stat-item">
+                      <h3>100% Halal</h3>
+                      <p>Prime Meats</p>
+                    </div>
+                    <div className="hero-stat-item">
+                      <h3>4.9 Star</h3>
+                      <p>800+ VIP Reviews</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="hero-visual-card">
+                    <div className="hero-image-box">
+                      <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=1000&q=80" alt="Butter chicken" />
+                      <div className="hero-floating-badge">
+                        <div className="badge-info">
+                          <h4>Old Delhi Makhani Chicken</h4>
+                          <p>Tandoor cooked, creamy tomato gravy</p>
+                        </div>
+                        <span style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--gold-primary)' }}>$17.99</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Quick Reserve Strip */}
+          <div className="container" style={{ position: 'relative', zIndex: 10 }}>
+            <div className="quick-reserve-strip">
+              <form className="quick-strip-grid" onSubmit={(e) => { e.preventDefault(); setIsReservationModalOpen(true); }}>
+                <div className="quick-field">
+                  <label><Icon name="calendar" size={13} /> Dining Date</label>
+                  <input type="date" defaultValue={new Date().toISOString().split('T')[0]} onChange={e => setQuickDate(e.target.value)} />
+                </div>
+                <div className="quick-field">
+                  <label><Icon name="clock" size={13} /> Time Slot</label>
+                  <select onChange={e => setQuickTime(e.target.value)}>
+                    <option value="12:00 PM">12:00 PM (Lunch)</option>
+                    <option value="01:30 PM">01:30 PM (Lunch)</option>
+                    <option value="05:30 PM">05:30 PM (Dinner)</option>
+                    <option value="07:00 PM" selected>07:00 PM (Dinner)</option>
+                    <option value="08:30 PM">08:30 PM (Dinner)</option>
+                  </select>
+                </div>
+                <div className="quick-field">
+                  <label><Icon name="award" size={13} /> Party Size</label>
+                  <select onChange={e => setQuickGuests(e.target.value)}>
+                    <option value="2">2 Guests</option>
+                    <option value="4">4 Guests</option>
+                    <option value="6">6 Guests</option>
+                    <option value="8+">8+ Guests</option>
+                  </select>
+                </div>
+                <div className="quick-field">
+                  <label><Icon name="sparkles" size={13} /> Ambiance</label>
+                  <select>
+                    <option>Main Dining Hall</option>
+                    <option>Romantic Candlelit Booth</option>
+                    <option>Outdoor Garden Patio</option>
+                  </select>
+                </div>
+                <button type="submit" className="btn btn-gold" style={{ height: '46px', marginTop: 'auto' }}>
+                  Find Table
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* Chef's Signature Section */}
+          <section className="section" style={{ paddingTop: '8rem' }}>
+            <div className="container">
+              <div className="section-header">
+                <span className="section-tag">Culinary Masterpieces</span>
+                <h2 className="section-title">Chef's Signature Specials</h2>
+                <p className="section-subtitle">Exquisite historical dishes slowly prepared by royal chefs using traditional spice recipes.</p>
+              </div>
+
+              <div className="menu-grid">
+                {specials.map(item => (
+                  <div key={item.id} className="menu-card">
+                    <div className="menu-card-image-box">
+                      <img src={item.image} alt={item.name} />
+                      <div className="card-top-badges">
+                        <span className="badge badge-gold">Chef's Pick</span>
+                        <span className={`badge ${item.isVeg ? 'badge-veg' : 'badge-nonveg'}`}>
+                          {item.isVeg ? 'VEG' : 'NON-VEG'}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="menu-card-content">
+                      <div className="card-header-row">
+                        <h3 className="dish-name">{item.name}</h3>
+                        <span className="dish-price">${item.price}</span>
+                      </div>
+                      <p className="dish-desc">{item.desc}</p>
+                      <div className="dish-meta-row">
+                        <span>Diet: {item.isVeg ? 'Vegetarian' : 'Halal meat'}</span>
+                        <div className="dish-spice-meter">
+                          <span>Heat:</span>
+                          {Array.from({ length: item.spiceLevel }).map((_, i) => (
+                            <span key={i} style={{ color: '#ff5722' }}>🌶️</span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="card-footer-actions">
+                        <button className="btn btn-outline-gold btn-sm" onClick={() => setSelectedItemForModal(item)}>
+                          Customize & Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+                <button className="btn btn-gold btn-lg" onClick={() => navigateTo('menu')}>
+                  Browse Complete Menu (14+ Items) <Icon name="arrowright" size={16} color="#000" />
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Flavor Tour */}
+          <section className="section tour-section" style={{ background: '#051417' }}>
+            <div className="container">
+              <div className="section-header">
+                <span className="section-tag">Gourmet Spice Tour</span>
+                <h2 className="section-title">The Royal Spice Cabinet</h2>
+                <p className="section-subtitle">Understanding the handpicked authentic spices that give Aroma its unmatched fragrance.</p>
+              </div>
+
+              <div className="tour-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '3rem', alignItems: 'center' }}>
+                <div className="glass-card" style={{ padding: '2.5rem' }}>
+                  <h3 style={{ fontSize: '1.6rem', color: '#fff', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>
+                    {spices[tourIndex].name}
+                  </h3>
+                  <p style={{ color: 'var(--gold-primary)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase', marginBottom: '0.8rem' }}>
+                    Sourced from: {spices[tourIndex].origin}
+                  </p>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                    {spices[tourIndex].desc}
+                  </p>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Heat Level: {spices[tourIndex].heat}</span>
+                    <button className="btn btn-outline-gold btn-sm" onClick={() => setTourIndex(prev => (prev + 1) % spices.length)}>
+                      Next Spice Cabinet →
+                    </button>
+                  </div>
+                </div>
+
+                <div style={{ position: 'relative' }}>
+                  <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80" alt="Spices" style={{ width: '100%', borderRadius: 'var(--radius-xl)', border: '1px solid var(--border-glow)' }} />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* History */}
+          <section className="section" style={{ background: 'var(--bg-secondary)' }}>
+            <div className="container">
+              <div className="tour-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+                <div style={{ position: 'relative' }}>
+                  <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" alt="Grill" style={{ width: '100%', borderRadius: 'var(--radius-xl)' }} />
+                  <div style={{ position: 'absolute', bottom: '-20px', right: '-20px', background: 'var(--bg-surface)', border: '1px solid var(--border-glow)', padding: '1.2rem', borderRadius: '12px', maxWidth: '240px' }}>
+                    <h4 style={{ color: 'var(--gold-primary)', fontSize: '1.1rem' }}>Heritage Cooking</h4>
+                    <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>We slow-smoke using genuine tandoor clay bricks imported directly from Punjab.</p>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="section-tag">Namaste & Welcome</span>
+                  <h2 className="section-title" style={{ textAlign: 'left', fontSize: '2.2rem', marginBottom: '1.2rem' }}>Our Heritage Story</h2>
+                  <p style={{ marginBottom: '1rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>At Aroma Indian Grill & Bar, we invite you to embark on a culinary journey across the historic spice routes of India. Our grand lounge features warm saffron lighting, Punjab clay tandoors, and luxury dining spaces designed for comfort.</p>
+                  <p style={{ marginBottom: '2rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>From Kashmiri Rogan Josh gravies to the coastlines of Malabar, every meal is prepared with fresh ingredients, 100% Halal meats, and an uncompromised standard of hospitality.</p>
+                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <button className="btn btn-gold" onClick={() => navigateTo('about')}>Read Full Story</button>
+                    <a href="tel:8035473200" className="btn btn-secondary"><Icon name="phone" size={14} /> Call Host</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Testimonials */}
+          <section className="section">
+            <div className="container">
+              <div className="section-header">
+                <span className="section-tag">VIP Diners</span>
+                <h2 className="section-title">Reviews From Aroma Club</h2>
+                <p className="section-subtitle">Read what Charlotte food critics and regular guests say about our gastronomy.</p>
+              </div>
+
+              <div className="tour-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+                <div className="glass-card" style={{ padding: '2rem' }}>
+                  <div style={{ display: 'flex', color: 'var(--gold-primary)', gap: '0.2rem', marginBottom: '0.8rem' }}>
+                    {Array.from({ length: 5 }).map((_, i) => <Icon key={i} name="star" size={14} color="var(--gold-primary)" />)}
+                  </div>
+                  <p style={{ fontStyle: 'italic', fontSize: '0.92rem', marginBottom: '1.2rem' }}>"The Lamb Chops are absolutely out of this world! Melt-in-your-mouth tenderness, perfectly spiced. The best Indian food in the Carolinas without a doubt."</p>
+                  <strong style={{ color: '#fff', fontSize: '0.9rem' }}>— Donald K. (Charlotte Food Guide)</strong>
+                </div>
+
+                <div className="glass-card" style={{ padding: '2rem' }}>
+                  <div style={{ display: 'flex', color: 'var(--gold-primary)', gap: '0.2rem', marginBottom: '0.8rem' }}>
+                    {Array.from({ length: 5 }).map((_, i) => <Icon key={i} name="star" size={14} color="var(--gold-primary)" />)}
+                  </div>
+                  <p style={{ fontStyle: 'italic', fontSize: '0.92rem', marginBottom: '1.2rem' }}>"Butter Chicken has the absolute perfect texture, not overly sweet. The garlic naan was fluffy and hot straight out of the clay tandoor. 10/10 dining service!"</p>
+                  <strong style={{ color: '#fff', fontSize: '0.9rem' }}>— Sarah M. (Charlotte Critic)</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      );
+    }
+
+    // --- Sub-View: Menu Screen ---
+    function MenuView({ menuItems, setSelectedItemForModal }) {
+      const [activeCategory, setActiveCategory] = useState('all');
+      const [searchQuery, setSearchQuery] = useState('');
+      const [dietFilter, setDietFilter] = useState('all'); // 'all' | 'veg' | 'nonveg'
+
+      const categories = [
+        { id: 'all', label: 'Complete Menu' },
+        { id: 'starters', label: 'Starters & Street Food' },
+        { id: 'sizzlers', label: 'Clay Oven Sizzlers' },
+        { id: 'curries', label: 'Slow Cooked Curries' },
+        { id: 'biryanis', label: 'Dum Biryanis' },
+        { id: 'breads', label: 'Tandoor Breads' },
+        { id: 'desserts', label: 'Royal Desserts' },
+        { id: 'drinks', label: 'Craft & Sodas' }
+      ];
+
+      // Filtered list
+      const filtered = menuItems.filter(item => {
+        const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
+        const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || item.desc.toLowerCase().includes(searchQuery.toLowerCase());
+        const matchesDiet = dietFilter === 'all' || (dietFilter === 'veg' && item.isVeg) || (dietFilter === 'nonveg' && !item.isVeg);
+        return matchesCategory && matchesSearch && matchesDiet;
+      });
+
+      return (
+        <section className="section" style={{ paddingTop: '3rem' }}>
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: '2.5rem' }}>
+              <span className="section-tag">Aroma Table Menu</span>
+              <h2 className="section-title">Explore Digital Menu</h2>
+              <p className="section-subtitle">Customize proteins, select spice levels, and add directly to your checkout card.</p>
+            </div>
+
+            <div className="menu-controls">
+              <div className="category-tabs">
+                {categories.map(cat => (
+                  <button
+                    key={cat.id}
+                    className={`category-tab ${activeCategory === cat.id ? 'active' : ''}`}
+                    onClick={() => setActiveCategory(cat.id)}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="menu-filter-bar">
+                <div className="search-input-box">
+                  <Icon name="star" size={16} />
+                  <input
+                    type="text"
+                    placeholder="Search butter chicken, lamb chop, naan..."
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                  />
+                </div>
+
+                <div className="dietary-filters">
+                  <button className={`filter-chip ${dietFilter === 'all' ? 'active' : ''}`} onClick={() => setDietFilter('all')}>
+                    All Dishes
+                  </button>
+                  <button className={`filter-chip ${dietFilter === 'veg' ? 'active' : ''}`} onClick={() => setDietFilter('veg')}>
+                    🟢 Veg Only
+                  </button>
+                  <button className={`filter-chip ${dietFilter === 'nonveg' ? 'active' : ''}`} onClick={() => setDietFilter('nonveg')}>
+                    🔴 Non-Veg (Halal)
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {filtered.length === 0 ? (
+              <div style={{ textAlign: 'center', padding: '4rem 1rem', color: 'var(--text-muted)' }}>
+                <p>No dishes found matching your criteria. Try adjusting filters!</p>
+              </div>
+            ) : (
+              <div className="menu-grid">
+                {filtered.map(item => (
+                  <div key={item.id} className="menu-card">
+                    <div className="menu-card-image-box">
+                      <img src={item.image} alt={item.name} />
+                      <div className="card-top-badges">
+                        {item.isChefSpecial && <span className="badge badge-gold">Specialty</span>}
+                        <span className={`badge ${item.isVeg ? 'badge-veg' : 'badge-nonveg'}`}>
+                          {item.isVeg ? 'VEG' : 'NON-VEG'}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="menu-card-content">
+                      <div className="card-header-row">
+                        <h3 className="dish-name">{item.name}</h3>
+                        <span className="dish-price">${item.price}</span>
+                      </div>
+                      <p className="dish-desc">{item.desc}</p>
+                      <div className="dish-meta-row">
+                        <span>Diet: {item.isVeg ? 'Vegetarian' : 'Halal'}</span>
+                        {item.spiceLevel > 0 && (
+                          <div className="dish-spice-meter">
+                            <span>Heat:</span>
+                            {Array.from({ length: item.spiceLevel }).map((_, i) => (
+                              <span key={i} style={{ color: '#ff5722' }}>🌶️</span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <div className="card-footer-actions">
+                        <button className="btn btn-gold btn-sm" onClick={() => setSelectedItemForModal(item)}>
+                          Customize & Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      );
+    }
+
+    // --- Sub-View: Catering Inquiry Screen ---
+    function CateringView({ handleCateringInquiry }) {
+      const [form, setForm] = useState({ name: '', email: '', phone: '', date: '', guests: '50', eventType: 'Wedding Reception', details: '' });
+
+      return (
+        <section className="section" style={{ paddingTop: '3rem' }}>
+          <div className="container">
+            <div className="section-header">
+              <span className="section-tag">Luxury Banquet Service</span>
+              <h2 className="section-title">Royal Event Catering</h2>
+              <p className="section-subtitle">Make your wedding reception, corporate lunch, or private gala unforgettable with live tandoor stations.</p>
+            </div>
+
+            <div className="catering-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem' }}>
+              <div className="glass-card" style={{ padding: '2.5rem' }}>
+                <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1.5rem', fontFamily: 'var(--font-serif)' }}>Catering Request Proposal Form</h3>
+                <form onSubmit={(e) => handleCateringInquiry(e, form)} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="grid-2col">
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>FULL NAME</label>
+                      <input type="text" required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.7rem', color: '#fff', borderRadius: '6px' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>EMAIL ADDRESS</label>
+                      <input type="email" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.7rem', color: '#fff', borderRadius: '6px' }} />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="grid-2col">
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>PHONE NUMBER</label>
+                      <input type="tel" required value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.7rem', color: '#fff', borderRadius: '6px' }} />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>EVENT DATE</label>
+                      <input type="date" required value={form.date} onChange={e => setForm({ ...form, date: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.7rem', color: '#fff', borderRadius: '6px' }} />
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="grid-2col">
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>PARTY SIZE</label>
+                      <select value={form.guests} onChange={e => setForm({ ...form, guests: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.7rem', color: '#fff', borderRadius: '6px' }}>
+                        <option value="25-50">25-50 guests</option>
+                        <option value="50-100">50-100 guests</option>
+                        <option value="100-250">100-250 guests</option>
+                        <option value="250+">250+ guests (Grand Ballroom)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>EVENT TYPE</label>
+                      <select value={form.eventType} onChange={e => setForm({ ...form, eventType: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.7rem', color: '#fff', borderRadius: '6px' }}>
+                        <option>Wedding Ceremony</option>
+                        <option>Corporate Dinner/Gala</option>
+                        <option>Birthday / Anniversary</option>
+                        <option>Home Party Sizzler Setup</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>MENU PREFERENCES & DETAILS</label>
+                    <textarea rows="4" placeholder="Let us know your favorites. Vegan choices, custom live clay-tandoor station setups..." value={form.details} onChange={e => setForm({ ...form, details: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.7rem', color: '#fff', borderRadius: '6px', outline: 'none' }}></textarea>
+                  </div>
+
+                  <button type="submit" className="btn btn-gold btn-lg" style={{ width: '100%', marginTop: '0.5rem' }}>
+                    Submit Proposal Request
+                  </button>
+                </form>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                <div className="glass-card" style={{ padding: '2rem' }}>
+                  <h4 style={{ color: 'var(--gold-primary)', fontSize: '1.2rem', marginBottom: '0.8rem', fontFamily: 'var(--font-serif)' }}>Live Sizzler Station</h4>
+                  <p style={{ fontSize: '0.88rem' }}>We set up a mobile Punjabi clay oven directly at your venue! Guests get freshly baked naan and burning sizzler kebabs served on-the-spot.</p>
+                </div>
+                <div className="glass-card" style={{ padding: '2rem' }}>
+                  <h4 style={{ color: 'var(--gold-primary)', fontSize: '1.2rem', marginBottom: '0.8rem', fontFamily: 'var(--font-serif)' }}>Full Service Bar</h4>
+                  <p style={{ fontSize: '0.88rem' }}>Aroma custom bar structures with professional mixologists pouring our signature saffron and cardamom-spiced craft cocktails.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    // --- Sub-View: About Heritage ---
+    function AboutView({ navigateTo }) {
+      return (
+        <section className="section" style={{ paddingTop: '3rem' }}>
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: '4rem' }}>
+              <span className="section-tag">Aroma Legacy</span>
+              <h2 className="section-title">The Culinary Saffron Trail</h2>
+              <p className="section-subtitle">From clay oven brick builders to five-star metropolitan spice curators.</p>
+            </div>
+
+            <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '4rem', alignItems: 'center', marginBottom: '5rem' }}>
+              <div>
+                <h3 style={{ fontSize: '1.6rem', color: '#fff', marginBottom: '1.2rem', fontFamily: 'var(--font-serif)' }}>Authentic Roots</h3>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', lineHeight: '1.8' }}>Founded by chefs with origins in Delhi and Kerala, Aroma bridges the gap between historical North Indian courtly meals (Mughlai curries) and the zesty, coconut-infused spice trails of Southern India.</p>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.8' }}>We use pure ghee, prime Halal meats, fresh milk solids, and dry-grind our masalas every 48 hours to ensure our flavors are vibrant and fragrant.</p>
+                <button className="btn btn-gold" onClick={() => navigateTo('menu')}>View Our Menu</button>
+              </div>
+              <div>
+                <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=80" alt="Cabinet" style={{ width: '100%', borderRadius: 'var(--radius-xl)' }} />
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    // --- Sub-View: Contact Details ---
+    function ContactView() {
+      return (
+        <section className="section" style={{ paddingTop: '3rem' }}>
+          <div className="container">
+            <div className="section-header">
+              <span className="section-tag">Find Us</span>
+              <h2 className="section-title">Hours & Locations</h2>
+              <p className="section-subtitle">Located in the booming Red Stone shopping district of Indian Land, South Carolina.</p>
+            </div>
+
+            <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3.5rem', marginBottom: '4rem' }}>
+              <div className="glass-card" style={{ padding: '2.5rem' }}>
+                <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>Location & Map</h3>
+                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>9648 Red Stone Dr, Indian Land, SC 29707. Located right beside the Cinema complex.</p>
+                <div style={{ width: '100%', height: '280px', borderRadius: '12px', background: '#091c20', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--border-glow)' }}>
+                  <Icon name="mappin" size={32} color="var(--gold-primary)" />
+                  <span style={{ color: '#fff', fontSize: '0.95rem', fontWeight: 600, marginTop: '0.5rem' }}>Charlotte Metro Area</span>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Lat: 34.9961, Long: -80.8523</p>
+                </div>
+              </div>
+
+              <div className="glass-card" style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.4rem', color: '#fff', marginBottom: '1.2rem', fontFamily: 'var(--font-serif)' }}>Working Hours</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Monday - Thursday</span><strong>11:30 AM - 10:00 PM</strong></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Friday & Saturday</span><strong>11:30 AM - 10:30 PM</strong></div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Sunday</span><strong>11:30 AM - 09:30 PM</strong></div>
+                  </div>
+                </div>
+
+                <div style={{ borderTop: '1px solid var(--border-glass)', paddingTop: '1.5rem', marginTop: '1.5rem' }}>
+                  <h4 style={{ color: '#fff', marginBottom: '0.5rem' }}>Contact Info</h4>
+                  <p style={{ fontSize: '0.88rem' }}>Host Line: <a href="tel:8035473200" style={{ color: 'var(--gold-primary)', fontWeight: 700 }}>(803) 547-3200</a></p>
+                  <p style={{ fontSize: '0.88rem' }}>Manager: <span style={{ color: 'var(--gold-primary)' }}>info@aromaindiangrill.com</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    // --- Sub-View: Profile Screen ---
+    function ProfileView({ currentUser, orders, handleLogout, navigateTo }) {
+      if (!currentUser) {
+        return (
+          <div className="container" style={{ padding: '8rem 1rem', textAlign: 'center' }}>
+            <Icon name="user" size={48} color="var(--gold-primary)" style={{ margin: '0 auto 1.5rem' }} />
+            <h2 style={{ color: '#fff', marginBottom: '0.8rem', fontFamily: 'var(--font-serif)' }}>Please Sign In</h2>
+            <p style={{ color: 'var(--text-muted)', marginBottom: '2.5rem' }}>You must login to access past order lists and active tracking codes.</p>
+          </div>
+        );
+      }
+
+      return (
+        <div className="profile-page" style={{ paddingTop: '2.5rem', paddingBottom: '6rem' }}>
+          <div className="container">
+            <div className="section-header" style={{ textAlign: 'left', marginBottom: '2.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+                <div>
+                  <span className="section-tag">Member Rewards Program</span>
+                  <h1 className="section-title" style={{ textAlign: 'left', margin: 0 }}>Namaste, {currentUser.name}</h1>
+                  <p style={{ color: 'var(--text-muted)', marginTop: '0.3rem' }}>Account Level: VIP Diner • {currentUser.email}</p>
+                </div>
+                <div style={{ display: 'flex', gap: '0.8rem' }}>
+                  {currentUser.role === 'admin' && (
+                    <button className="btn btn-gold" onClick={() => navigateTo('admin')}>
+                      <Icon name="shield" size={14} color="#000" /> Admin Panel
+                    </button>
+                  )}
+                  <button className="btn btn-secondary" onClick={handleLogout}>Sign Out</button>
+                </div>
+              </div>
+            </div>
+
+            <div className="profile-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: '2.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div className="glass-card" style={{ padding: '2rem' }}>
+                  <h3 style={{ fontSize: '1.2rem', color: '#fff', marginBottom: '1.2rem', fontFamily: 'var(--font-serif)' }}>Account Details</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.9rem' }}>
+                    <div><span style={{ color: 'var(--text-muted)' }}>Email:</span> <span style={{ color: '#fff' }}>{currentUser.email}</span></div>
+                    <div><span style={{ color: 'var(--text-muted)' }}>Phone:</span> <span style={{ color: '#fff' }}>{currentUser.phone}</span></div>
+                    <div><span style={{ color: 'var(--text-muted)' }}>Delivery address:</span> <span style={{ color: '#fff' }}>{currentUser.address?.street || 'Not provided'}</span></div>
+                  </div>
+                </div>
+
+                <div className="glass-card" style={{ padding: '1.8rem', background: 'radial-gradient(circle, rgba(243, 191, 55, 0.12) 0%, rgba(6, 21, 24, 0.9) 100%)' }}>
+                  <span className="badge badge-gold" style={{ marginBottom: '0.5rem' }}>15% Promotion Active</span>
+                  <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.2rem' }}>AROMA15 Promo Code</h4>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Apply at checkout for 15% discount on all orders.</p>
+                </div>
+              </div>
+
+              <div className="glass-card" style={{ padding: '2rem' }}>
+                <h3 style={{ fontSize: '1.3rem', color: '#fff', marginBottom: '1.5rem', fontFamily: 'var(--font-serif)' }}>Your Order Logs</h3>
+                {orders.length === 0 ? (
+                  <p style={{ color: 'var(--text-muted)' }}>No orders placed yet.</p>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {orders.map((o, idx) => (
+                      <div key={idx} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-glass)', padding: '1.2rem', borderRadius: '8px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.6rem' }}>
+                          <strong style={{ color: 'var(--gold-primary)' }}>Order #{o.orderId}</strong>
+                          <span className="badge badge-gold" style={{ fontSize: '0.65rem' }}>{o.status.replace('_', ' ')}</span>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                          {o.items.map((it, i) => (
+                            <div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                              <span>{it.quantity}x {it.name}</span>
+                              <span>${(it.price * it.quantity).toFixed(2)}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.6rem', paddingTop: '0.6rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.9rem' }}>
+                          <span>Charged total:</span>
+                          <strong>${o.total.toFixed(2)}</strong>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- Sub-View: Order Tracking Screen ---
+    function OrderTrackingView({ orderId, orders, navigateTo }) {
+      const activeOrder = orders.find(o => o.orderId === orderId) || orders[0];
+      const [status, setStatus] = useState(activeOrder ? activeOrder.status : 'order_received');
+
+      // Auto update status animation
+      useEffect(() => {
+        if (!activeOrder) return;
+        setStatus(activeOrder.status);
+
+        const timer = setInterval(() => {
+          setStatus(current => {
+            if (current === 'order_received') return 'preparing';
+            if (current === 'preparing') return 'cooking';
+            if (current === 'cooking') return 'ready_for_delivery';
+            return current;
+          });
+        }, 15000); // changes status phases every 15s for visual simulation
+
+        return () => clearInterval(timer);
+      }, [orderId]);
+
+      if (!activeOrder) {
+        return (
+          <div className="container" style={{ padding: '6rem 1rem', textAlign: 'center' }}>
+            <p>No active order selected for tracking.</p>
+            <button className="btn btn-gold btn-sm" onClick={() => navigateTo('menu')} style={{ marginTop: '1rem' }}>Browse Menu</button>
+          </div>
+        );
+      }
+
+      const steps = [
+        { id: 'order_received', label: 'Received' },
+        { id: 'preparing', label: 'Preparing' },
+        { id: 'cooking', label: 'In Tandoor' },
+        { id: 'ready_for_delivery', label: 'Out for Delivery' }
+      ];
+
+      const getStepIndex = (s) => steps.findIndex(x => x.id === s);
+      const activeIdx = getStepIndex(status);
+
+      return (
+        <section className="section" style={{ paddingTop: '3rem' }}>
+          <div className="container">
+            <div className="order-tracker-card">
+              <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+                <span className="badge badge-gold" style={{ marginBottom: '0.5rem' }}>Live Order Tracking</span>
+                <h2 style={{ fontSize: '1.8rem', color: '#fff', fontFamily: 'var(--font-serif)' }}>Order #{activeOrder.orderId} status</h2>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>Estimated arrival: 25-35 minutes</p>
+              </div>
+
+              <div className="tracker-timeline">
+                {steps.map((st, i) => {
+                  let statusClass = '';
+                  if (i < activeIdx) statusClass = 'completed';
+                  else if (i === activeIdx) statusClass = 'active';
+
+                  return (
+                    <div key={st.id} className={`tracker-step ${statusClass}`}>
+                      <div className="step-circle">
+                        {i < activeIdx ? '✓' : i + 1}
+                      </div>
+                      <span style={{ fontSize: '0.85rem', fontWeight: 600, color: i <= activeIdx ? 'var(--gold-light)' : 'var(--text-muted)' }}>
+                        {st.label}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="glass-card" style={{ padding: '1.5rem', marginTop: '3rem' }}>
+                <h3 style={{ fontSize: '1.1rem', color: '#fff', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>Items in Order</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.88rem' }}>
+                  {activeOrder.items?.map((item, idx) => (
+                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)' }}>
+                      <span>{item.quantity}x {item.name}</span>
+                      <span>${(item.price * item.quantity).toFixed(2)}</span>
+                    </div>
+                  ))}
+                  <div style={{ borderTop: '1px solid var(--border-glass)', marginTop: '0.8rem', paddingTop: '0.8rem', display: 'flex', justifyContent: 'space-between', fontWeight: 700, color: 'var(--gold-primary)', fontSize: '1.05rem' }}>
+                    <span>Total Charged via Square:</span>
+                    <span>${activeOrder.total?.toFixed(2)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    // --- Sub-View: Admin Dashboard Screen ---
+    function AdminDashboardView({ orders, setOrders, reservations, setReservations, cateringInquiries, setCateringInquiries, menuItems, setMenuItems, showToast }) {
+      const [viewMode, setViewMode] = useState('orders'); // 'orders' | 'reservations' | 'catering' | 'menu'
+      const [editPriceId, setEditPriceId] = useState(null);
+      const [newPrice, setNewPrice] = useState('');
+
+      const updateOrderStatus = (id, newStatus) => {
+        setOrders(prev => prev.map(o => o.orderId === id ? { ...o, status: newStatus } : o));
+        showToast(`Order #${id} updated to ${newStatus}`);
+      };
+
+      const updateReservationStatus = (id, newStatus) => {
+        setReservations(prev => prev.map(r => r.id === id ? { ...r, status: newStatus } : r));
+        showToast(`Reservation {id} updated to ${newStatus}`);
+      };
+
+      const updateCateringStatus = (id, newStatus) => {
+        setCateringInquiries(prev => prev.map(c => c.id === id ? { ...c, status: newStatus } : c));
+        showToast(`Catering inquiry ${id} updated to ${newStatus}`);
+      };
+
+      const handleUpdatePrice = (dishId) => {
+        setMenuItems(prev => prev.map(d => d.id === dishId ? { ...d, price: parseFloat(newPrice) } : d));
+        setEditPriceId(null);
+        showToast(`Dish price updated successfully!`);
+      };
+
+      return (
+        <section className="section" style={{ paddingTop: '2.5rem' }}>
+          <div className="container">
+            <div className="section-header" style={{ textAlign: 'left', marginBottom: '2rem' }}>
+              <span className="section-tag">Executive Controls</span>
+              <h2 className="section-title" style={{ textAlign: 'left' }}>Aroma Admin Operations</h2>
+              <p style={{ color: 'var(--text-muted)' }}>Review guest interactions, modify menu pricing in real-time, and check dining revenue charts.</p>
+            </div>
+
+            {/* SVG Charts Area */}
+            <div className="tour-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '2rem', marginBottom: '2.5rem' }}>
+              <div className="glass-card" style={{ padding: '1.5rem' }}>
+                <h4 style={{ color: '#fff', fontSize: '1rem', marginBottom: '1rem', fontFamily: 'var(--font-serif)' }}>Weekly Saffron Restaurant Revenue Simulation</h4>
+                <div style={{ height: '140px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-around', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-glass)' }}>
+                  <div style={{ height: '60%', width: '30px', background: 'var(--gold-primary)', borderRadius: '4px 4px 0 0', position: 'relative' }}><span style={{ position: 'absolute', top: '-1.5rem', left: '50%', transform: 'translateX(-50%)', fontSize: '0.75rem' }}>$4K</span></div>
+                  <div style={{ height: '80%', width: '30px', background: 'var(--gold-primary)', borderRadius: '4px 4px 0 0', position: 'relative' }}><span style={{ position: 'absolute', top: '-1.5rem', left: '50%', transform: 'translateX(-50%)', fontSize: '0.75rem' }}>$5.2K</span></div>
+                  <div style={{ height: '55%', width: '30px', background: 'var(--gold-primary)', borderRadius: '4px 4px 0 0', position: 'relative' }}><span style={{ position: 'absolute', top: '-1.5rem', left: '50%', transform: 'translateX(-50%)', fontSize: '0.75rem' }}>$3.8K</span></div>
+                  <div style={{ height: '95%', width: '30px', background: 'var(--saffron-orange)', borderRadius: '4px 4px 0 0', position: 'relative' }}><span style={{ position: 'absolute', top: '-1.5rem', left: '50%', transform: 'translateX(-50%)', fontSize: '0.75rem' }}>$6.5K</span></div>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-around', fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+                  <span>Mon-Tue</span><span>Wed-Thu</span><span>Friday</span><span>Saturday (Peak)</span>
+                </div>
+              </div>
+
+              <div className="glass-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', justifycontent: 'space-between' }}>
+                <h4 style={{ color: '#fff', fontSize: '1rem', marginBottom: '0.5rem', fontFamily: 'var(--font-serif)' }}>Log Count Stats</h4>
+                <div style={{ fontSize: '0.9rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  <div style={{ display: 'flex', justifycontent: 'space-between' }}><span>Total Orders placed:</span><strong>{orders.length}</strong></div>
+                  <div style={{ display: 'flex', justifycontent: 'space-between' }}><span>Table Bookings:</span><strong>{reservations.length}</strong></div>
+                  <div style={{ display: 'flex', justifycontent: 'space-between' }}><span>Catering Leads:</span><strong>{cateringInquiries.length}</strong></div>
+                </div>
+              </div>
+            </div>
+
+            {/* View selectors */}
+            <div style={{ display: 'flex', gap: '0.5rem', overflowX: 'auto', paddingBottom: '0.8rem', marginBottom: '1.5rem' }}>
+              <button className={`btn btn-sm ${viewMode === 'orders' ? 'btn-gold' : 'btn-secondary'}`} onClick={() => setViewMode('orders')}>Live Orders ({orders.length})</button>
+              <button className={`btn btn-sm ${viewMode === 'reservations' ? 'btn-gold' : 'btn-secondary'}`} onClick={() => setViewMode('reservations')}>Bookings ({reservations.length})</button>
+              <button className={`btn btn-sm ${viewMode === 'catering' ? 'btn-gold' : 'btn-secondary'}`} onClick={() => setViewMode('catering')}>Catering Leads ({cateringInquiries.length})</button>
+              <button className={`btn btn-sm ${viewMode === 'menu' ? 'btn-gold' : 'btn-secondary'}`} onClick={() => setViewMode('menu')}>Edit Menu Prices</button>
+            </div>
+
+            {/* List Panels */}
+            {viewMode === 'orders' && (
+              <div className="glass-card" style={{ padding: '1.5rem' }}>
+                {orders.length === 0 ? <p style={{ color: 'var(--text-muted)' }}>No live orders in system.</p> : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {orders.map(o => (
+                      <div key={o.orderId} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', borderBottom: '1px solid var(--border-glass)', paddingBottom: '1rem' }}>
+                        <div>
+                          <strong>Order #{o.orderId}</strong> - <span style={{ color: 'var(--gold-primary)' }}>{o.customerName} ({o.customerEmail})</span>
+                          <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Charged total: ${o.total.toFixed(2)}</p>
+                        </div>
+                        <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+                          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Status:</span>
+                          <select value={o.status} onChange={(e) => updateOrderStatus(o.orderId, e.target.value)} style={{ background: 'var(--bg-surface)', color: '#fff', border: '1px solid var(--border-glow)', padding: '0.3rem', borderRadius: '4px' }}>
+                            <option value="order_received">Order Received</option>
+                            <option value="preparing">Preparing</option>
+                            <option value="cooking">In Tandoor</option>
+                            <option value="ready_for_delivery">Out for Delivery</option>
+                            <option value="delivered">Delivered</option>
+                          </select>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {viewMode === 'reservations' && (
+              <div className="glass-card" style={{ padding: '1.5rem' }}>
+                {reservations.length === 0 ? <p style={{ color: 'var(--text-muted)' }}>No table bookings submitted.</p> : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {reservations.map(r => (
+                      <div key={r.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', borderBottom: '1px solid var(--border-glass)', paddingBottom: '1rem' }}>
+                        <div>
+                          <strong>Reservation {r.id}</strong> - <span style={{ color: 'var(--gold-primary)' }}>{r.name}</span>
+                          <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Date: {r.date} • {r.time} • {r.guests} guests • Booth: {r.ambiance}</p>
+                        </div>
+                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                          <button className="btn btn-secondary btn-sm" onClick={() => updateReservationStatus(r.id, 'confirmed')} style={{ color: 'var(--emerald-green)' }}>Confirm</button>
+                          <button className="btn btn-secondary btn-sm" onClick={() => updateReservationStatus(r.id, 'cancelled')} style={{ color: 'var(--ruby-red)' }}>Cancel</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {viewMode === 'catering' && (
+              <div className="glass-card" style={{ padding: '1.5rem' }}>
+                {cateringInquiries.length === 0 ? <p style={{ color: 'var(--text-muted)' }}>No catering leads submitted.</p> : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {cateringInquiries.map(c => (
+                      <div key={c.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', borderBottom: '1px solid var(--border-glass)', paddingBottom: '1rem' }}>
+                        <div>
+                          <strong>Catering Lead {c.id}</strong> - <span style={{ color: 'var(--gold-primary)' }}>{c.name} ({c.phone})</span>
+                          <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Event Date: {c.date} • Size: {c.guests} guests • Type: {c.eventType}</p>
+                          <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginTop: '0.3rem' }}>Notes: "{c.details}"</p>
+                        </div>
+                        <div>
+                          <button className="btn btn-secondary btn-sm" onClick={() => updateCateringStatus(c.id, 'proposal_sent')}>Send Proposal Quote</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {viewMode === 'menu' && (
+              <div className="glass-card" style={{ padding: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.2rem' }}>
+                  {menuItems.map(dish => (
+                    <div key={dish.id} style={{ border: '1px solid var(--border-glass)', padding: '1rem', borderRadius: '8px', background: 'rgba(0,0,0,0.1)' }}>
+                      <strong>{dish.name}</strong>
+                      <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Category: {dish.category}</p>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
+                        {editPriceId === dish.id ? (
+                          <div style={{ display: 'flex', gap: '0.4rem' }}>
+                            <input type="number" defaultValue={dish.price} onChange={e => setNewPrice(e.target.value)} style={{ width: '80px', background: 'var(--bg-main)', border: '1px solid var(--border-glow)', color: '#fff', padding: '0.2rem' }} />
+                            <button className="btn btn-gold btn-sm" style={{ padding: '0.2rem 0.5rem' }} onClick={() => handleUpdatePrice(dish.id)}>Save</button>
+                          </div>
+                        ) : (
+                          <>
+                            <strong style={{ color: 'var(--gold-primary)' }}>${dish.price}</strong>
+                            <button className="btn btn-secondary btn-sm" style={{ padding: '0.2rem 0.6rem' }} onClick={() => { setEditPriceId(dish.id); setNewPrice(dish.price); }}>Edit Price</button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      );
+    }
+
+    // --- Sub-View: Item Customization Modal ---
+    function ItemModal({ item, onClose, handleAddToCart }) {
+      const [quantity, setQuantity] = useState(1);
+      const [protein, setProtein] = useState('Chicken');
+      const [spiceLevel, setSpiceLevel] = useState(2); // 1 = Mild, 2 = Medium, 3 = Hot, 4 = Extra Hot
+      const [notes, setNotes] = useState('');
+      const [addons, setAddons] = useState(false); // Extra Naan
+
+      const handleAdd = () => {
+        handleAddToCart(item, {
+          quantity,
+          protein: item.category === 'curries' || item.category === 'biryanis' ? protein : null,
+          spiceLevel: item.spiceLevel > 0 ? spiceLevel : null,
+          notes,
+          addonName: addons ? 'Extra Garlic Naan' : null,
+          addonPrice: addons ? 3.99 : null
+        });
+      };
+
+      const spiceLabels = { 1: 'Mild 🌶️', 2: 'Medium 🌶️🌶️', 3: 'Hot 🌶️🌶️🌶️', 4: 'Extra Hot 🌶️🌶️🌶️🌶️' };
+
+      return (
+        <div className="modal-backdrop" onClick={onClose}>
+          <div className="modal-dialog" onClick={e => e.stopPropagation()} style={{ maxWidth: '520px' }}>
+            <button className="modal-close-btn" onClick={onClose}><Icon name="x" size={20} /></button>
+
+            <img src={item.image} alt={item.name} style={{ width: '100%', height: '200px', objectFit: 'cover' }} />
+
+            <div style={{ padding: '1.8rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.8rem' }}>
+                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem' }}>{item.name}</h2>
+                <strong style={{ color: 'var(--gold-primary)', fontSize: '1.3rem' }}>${item.price}</strong>
+              </div>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.5rem' }}>{item.desc}</p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+                {/* Protein Selection (Only for curries/biryanis) */}
+                {(item.category === 'curries' || item.category === 'biryanis') && (
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.4rem', textTransform: 'uppercase' }}>Select Protein Option *</label>
+                    <select value={protein} onChange={e => setProtein(e.target.value)} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }}>
+                      <option value="Chicken">Halal Boneless Chicken Tikka</option>
+                      <option value="Lamb">Prime Boneless Lamb (+$3.00)</option>
+                      <option value="Goat">Traditional Bone-in Tender Goat (+$4.00)</option>
+                      <option value="Paneer">Artisan Paneer Cubes</option>
+                      <option value="Tofu">Organic Grilled Tofu (Vegan)</option>
+                    </select>
+                  </div>
+                )}
+
+                {/* Spice Level selection */}
+                {item.spiceLevel > 0 && (
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.4rem', textTransform: 'uppercase' }}>Select Spice Level *</label>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+                      {[1, 2, 3, 4].map(idx => (
+                        <button
+                          key={idx}
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                          style={{
+                            background: spiceLevel === idx ? 'var(--gold-primary)' : 'var(--bg-surface)',
+                            color: spiceLevel === idx ? '#000' : '#fff',
+                            borderColor: spiceLevel === idx ? 'var(--gold-primary)' : 'var(--border-glass)',
+                            fontWeight: 700
+                          }}
+                          onClick={() => setSpiceLevel(idx)}
+                        >
+                          {spiceLabels[idx].split(' ')[0]}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Add-ons */}
+                {item.category !== 'drinks' && item.category !== 'desserts' && (
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.4rem', textTransform: 'uppercase' }}>Side Add-ons</label>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'var(--bg-surface)', padding: '0.7rem', borderRadius: '6px', border: '1px solid var(--border-glass)' }}>
+                      <input type="checkbox" checked={addons} onChange={e => setAddons(e.target.checked)} style={{ width: '16px', height: '16px', accentColor: 'var(--gold-primary)' }} />
+                      <span style={{ fontSize: '0.88rem' }}>Add Garlic Butter Naan (+$3.99)</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Notes */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.4rem', textTransform: 'uppercase' }}>Preparation Notes</label>
+                  <input type="text" placeholder="Extra cilantro, sauce on the side, no onions..." value={notes} onChange={e => setNotes(e.target.value)} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }} />
+                </div>
+
+                {/* Qty control and Add */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 2fr', gap: '1rem', marginTop: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifycontent: 'space-around', background: 'var(--bg-surface)', border: '1px solid var(--border-glass)', borderRadius: '8px' }}>
+                    <button className="qty-btn" onClick={() => setQuantity(q => q > 1 ? q - 1 : 1)}>-</button>
+                    <strong style={{ fontSize: '1.1rem' }}>{quantity}</strong>
+                    <button className="qty-btn" onClick={() => setQuantity(q => q + 1)}>+</button>
+                  </div>
+
+                  <button className="btn btn-gold" onClick={handleAdd}>
+                    Add to Feast
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- Sub-View: Table Booking Reservation Modal ---
+    function ReservationModal({ isOpen, onClose, handleBook, quickDate, quickGuests, quickTime }) {
+      const [form, setForm] = useState({ date: quickDate, time: quickTime, guests: quickGuests, ambiance: 'Romantic Candlelit Booth', name: '', email: '', phone: '' });
+
+      if (!isOpen) return null;
+
+      return (
+        <div className="modal-backdrop" onClick={onClose}>
+          <div className="modal-dialog" onClick={e => e.stopPropagation()} style={{ maxWidth: '520px' }}>
+            <button className="modal-close-btn" onClick={onClose}><Icon name="x" size={20} /></button>
+
+            <div style={{ padding: '2rem' }}>
+              <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                <Icon name="calendar" size={32} color="var(--gold-primary)" style={{ margin: '0 auto 0.5rem' }} />
+                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: '#fff' }}>Table Reservation Booking</h2>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Secure a luxury table at Aroma Indian Land, SC.</p>
+              </div>
+
+              <form onSubmit={(e) => handleBook(e, form)} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="grid-2col">
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>DATE</label>
+                    <input type="date" value={form.date} onChange={e => setForm({ ...form, date: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>TIME SLOT</label>
+                    <select value={form.time} onChange={e => setForm({ ...form, time: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }}>
+                      <option value="12:00 PM">12:00 PM (Lunch)</option>
+                      <option value="01:30 PM">01:30 PM (Lunch)</option>
+                      <option value="05:30 PM">05:30 PM (Dinner)</option>
+                      <option value="07:00 PM">07:00 PM (Dinner)</option>
+                      <option value="08:30 PM">08:30 PM (Dinner)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="grid-2col">
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>PARTY SIZE</label>
+                    <select value={form.guests} onChange={e => setForm({ ...form, guests: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }}>
+                      <option value="2">2 Guests</option>
+                      <option value="4">4 Guests</option>
+                      <option value="6">6 Guests</option>
+                      <option value="8+">8+ Guests</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>AMBIANCE</label>
+                    <select value={form.ambiance} onChange={e => setForm({ ...form, ambiance: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }}>
+                      <option>Main Dining Hall</option>
+                      <option>Romantic Candlelit Booth</option>
+                      <option>Private VIP Lounge</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ borderTop: '1px solid var(--border-glass)', paddingTop: '1rem' }}>
+                  <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>CONTACT NAME *</label>
+                  <input type="text" required placeholder="Priya Sharma" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }} />
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }} className="grid-2col">
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>EMAIL ADDRESS *</label>
+                    <input type="email" required placeholder="name@example.com" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>MOBILE PHONE *</label>
+                    <input type="tel" required placeholder="(803) 555-0199" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }} />
+                  </div>
+                </div>
+
+                <button type="submit" className="btn btn-gold" style={{ width: '100%', marginTop: '0.5rem' }}>
+                  Instantly Reserve Table
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- Sub-View: Cart Drawer ---
+    function CartDrawer({ cart, onClose, handleUpdateQuantity, handleRemoveFromCart, subtotal, discount, tax, deliveryFee, tipPercentage, setTipPercentage, tipAmount, cartTotal, promoCode, setPromoCode, handleApplyPromo, appliedPromo, fulfillmentType, setFulfillmentType, userDetails, setUserDetails, handleCheckoutTrigger }) {
+      const [customTipActive, setCustomTipActive] = useState(false);
+
+      return (
+        <div className="cart-drawer-overlay" onClick={onClose}>
+          <div className="cart-drawer" onClick={e => e.stopPropagation()}>
+            <div className="cart-header">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <Icon name="shoppingbag" size={20} color="var(--gold-primary)" />
+                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#fff' }}>Your Feast Cart</h2>
+              </div>
+              <button onClick={onClose} style={{ background: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }}>
+                <Icon name="x" size={22} />
+              </button>
+            </div>
+
+            {/* Toggle pickup vs delivery */}
+            <div style={{ padding: '1rem 1.5rem', background: 'var(--bg-surface)', borderBottom: '1px solid var(--border-glass)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', background: 'var(--bg-main)', padding: '4px', borderRadius: '8px' }}>
+                <button className="btn btn-sm" style={{ background: fulfillmentType === 'pickup' ? 'var(--gold-primary)' : 'transparent', color: fulfillmentType === 'pickup' ? '#000' : '#fff' }} onClick={() => setFulfillmentType('pickup')}>Pickup (Free)</button>
+                <button className="btn btn-sm" style={{ background: fulfillmentType === 'delivery' ? 'var(--gold-primary)' : 'transparent', color: fulfillmentType === 'delivery' ? '#000' : '#fff' }} onClick={() => setFulfillmentType('delivery')}>Delivery ($4.99)</button>
+              </div>
+            </div>
+
+            <div className="cart-items-scroll">
+              {cart.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '4rem 1rem', color: 'var(--text-muted)' }}>
+                  <p>Your cart is empty. Start adding delicious Royal treats!</p>
+                </div>
+              ) : (
+                cart.map((item, idx) => (
+                  <div key={idx} className="cart-item-row">
+                    <img src={item.image} alt={item.name} className="cart-item-thumb" />
+                    <div className="cart-item-details">
+                      <div>
+                        <h4 className="cart-item-title">{item.name}</h4>
+                        <p style={{ fontSize: '0.75rem', color: 'var(--gold-primary)' }}>
+                          {item.selectedProtein ? `Protein: ${item.selectedProtein}` : ''} 
+                          {item.spiceLevel ? ` • Spice: ${item.spiceLevel}🌶️` : ''}
+                          {item.addonName ? ` • ${item.addonName}` : ''}
+                        </p>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div className="cart-qty-control">
+                          <button className="qty-btn" onClick={() => handleUpdateQuantity(idx, -1)}>-</button>
+                          <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>{item.quantity}</span>
+                          <button className="qty-btn" onClick={() => handleUpdateQuantity(idx, 1)}>+</button>
+                        </div>
+                        <span style={{ fontWeight: 700, color: 'var(--gold-primary)', fontSize: '0.95rem' }}>
+                          ${((item.price + (item.addonPrice || 0)) * item.quantity).toFixed(2)}
+                        </span>
+                        <button onClick={() => handleRemoveFromCart(idx)} style={{ background: 'transparent', border: 'none', color: '#ef4444', cursor: 'pointer' }}><Icon name="trash" size={15} /></button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {cart.length > 0 && (
+              <div className="cart-footer">
+                {/* Checkout forms */}
+                <div style={{ marginBottom: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <input
+                      type="text"
+                      placeholder="Promo Code (AROMA15)"
+                      value={promoCode}
+                      onChange={e => setPromoCode(e.target.value)}
+                      style={{ flex: 1, background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.55rem', borderRadius: '4px', color: '#fff', fontSize: '0.85rem' }}
+                    />
+                    <button className="btn btn-gold btn-sm" onClick={() => handleApplyPromo(promoCode)}>Apply</button>
+                  </div>
+                  {appliedPromo && <p style={{ fontSize: '0.78rem', color: 'var(--emerald-green)' }}>✓ 15% discount applied successfully!</p>}
+                </div>
+
+                {/* Tips */}
+                <div style={{ marginBottom: '1.2rem' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, display: 'block', marginBottom: '0.4rem' }}>ADD TIP FOR STAFF</span>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.4rem' }}>
+                    {[15, 18, 20, 25].map(pct => (
+                      <button
+                        key={pct}
+                        className="btn btn-secondary btn-sm"
+                        style={{ background: tipPercentage === pct ? 'var(--gold-primary)' : 'var(--bg-surface)', color: tipPercentage === pct ? '#000' : '#fff', fontSize: '0.78rem' }}
+                        onClick={() => { setTipPercentage(pct); setCustomTipActive(false); }}
+                      >
+                        {pct}%
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Summary */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem', borderTop: '1px solid var(--border-glass)', paddingTop: '0.8rem', marginBottom: '1rem' }}>
+                  <div className="cart-summary-line"><span>Subtotal:</span><span>${subtotal.toFixed(2)}</span></div>
+                  {discount > 0 && <div className="cart-summary-line" style={{ color: 'var(--emerald-green)' }}><span>Discount (15%):</span><span>-${discount.toFixed(2)}</span></div>}
+                  <div className="cart-summary-line"><span>Tax (8.25%):</span><span>${tax.toFixed(2)}</span></div>
+                  {fulfillmentType === 'delivery' && <div className="cart-summary-line"><span>Delivery Fee:</span><span>${deliveryFee.toFixed(2)}</span></div>}
+                  <div className="cart-summary-line"><span>Staff Tip:</span><span>${tipAmount.toFixed(2)}</span></div>
+                  <div className="cart-summary-line total"><span>Total:</span><span>${cartTotal.toFixed(2)}</span></div>
+                </div>
+
+                {/* Billing Details fields */}
+                <div style={{ borderTop: '1px solid var(--border-glass)', paddingTop: '1rem', marginBottom: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--gold-light)', fontWeight: 700, display: 'block' }}>DELIVERY & CONTACT DETAILS</span>
+                  <input type="text" placeholder="Your Full Name *" required value={userDetails.name} onChange={e => setUserDetails({ ...userDetails, name: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.5rem', color: '#fff', borderRadius: '4px', fontSize: '0.82rem' }} />
+                  <input type="tel" placeholder="Mobile Phone (SMS Alerts) *" required value={userDetails.phone} onChange={e => setUserDetails({ ...userDetails, phone: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.5rem', color: '#fff', borderRadius: '4px', fontSize: '0.82rem' }} />
+                  {fulfillmentType === 'delivery' && (
+                    <input type="text" placeholder="Street Address *" required value={userDetails.street} onChange={e => setUserDetails({ ...userDetails, street: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.5rem', color: '#fff', borderRadius: '4px', fontSize: '0.82rem' }} />
+                  )}
+                </div>
+
+                <button className="btn btn-gold btn-lg" style={{ width: '100%' }} onClick={(e) => {
+                  if (!userDetails.name || !userDetails.phone) {
+                    alert('Please provide name and phone');
+                    return;
+                  }
+                  if (fulfillmentType === 'delivery' && !userDetails.street) {
+                    alert('Please enter delivery address');
+                    return;
+                  }
+                  handleCheckoutTrigger();
+                }}>
+                  Checkout via Square →
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // --- Sub-View: Square Payment Modal Simulation ---
+    function SquarePaymentModal({ total, onClose, onSuccess }) {
+      const [formData, setFormData] = useState({ card: '4111 2222 3333 4444', exp: '12/28', cvv: '123' });
+      const [loading, setLoading] = useState(false);
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+          onSuccess();
+        }, 1500);
+      };
+
+      return (
+        <div className="modal-backdrop" onClick={onClose} style={{ zIndex: 4800 }}>
+          <div className="modal-dialog" onClick={e => e.stopPropagation()} style={{ maxWidth: '420px' }}>
+            <button className="modal-close-btn" onClick={onClose}><Icon name="x" size={20} /></button>
+
+            <div style={{ padding: '2rem' }}>
+              <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                <Icon name="shield" size={28} color="var(--gold-primary)" style={{ margin: '0 auto 0.5rem' }} />
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#fff' }}>Secure Square Checkout</h3>
+                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Amount to charge: <span style={{ color: 'var(--gold-primary)', fontWeight: 700 }}>${total.toFixed(2)}</span></p>
+              </div>
+
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>CARD NUMBER *</label>
+                  <input type="text" required value={formData.card} onChange={e => setFormData({ ...formData, card: e.target.value })} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px', fontSize: '0.9rem', outline: 'none' }} />
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>EXPIRY *</label>
+                    <input type="text" required value={formData.exp} onChange={e => setFormData({ ...formData, exp: e.target.value })} placeholder="MM/YY" style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px', fontSize: '0.9rem', outline: 'none' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>CVV *</label>
+                    <input type="password" required value={formData.cvv} onChange={e => setFormData({ ...formData, cvv: e.target.value })} placeholder="•••" style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px', fontSize: '0.9rem', outline: 'none' }} />
+                  </div>
+                </div>
+
+                <button type="submit" disabled={loading} className="btn btn-gold" style={{ width: '100%', marginTop: '0.5rem' }}>
+                  {loading ? 'Processing via Square...' : `Pay $${total.toFixed(2)}`}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- Sub-View: Auth Modal Simulation ---
+    function AuthModal({ isOpen, onClose, mode, setMode, handleLogin, handleRegister }) {
+      const [email, setEmail] = useState('');
+      const [password, setPassword] = useState('');
+      const [name, setName] = useState('');
+
+      if (!isOpen) return null;
+
+      const onSubmit = (e) => {
+        e.preventDefault();
+        if (mode === 'login') {
+          handleLogin(email, password);
+        } else {
+          handleRegister({ name, email, phone: '(803) 555-0199', street: '9648 Red Stone Dr' });
+        }
+      };
+
+      return (
+        <div className="modal-backdrop" onClick={onClose}>
+          <div className="modal-dialog" onClick={e => e.stopPropagation()} style={{ maxWidth: '440px' }}>
+            <button className="modal-close-btn" onClick={onClose}><Icon name="x" size={20} /></button>
+
+            <div style={{ padding: '2rem' }}>
+              <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: '#fff', marginBottom: '0.3rem' }}>Aroma Dining Club</h3>
+                <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Unlock rewards and view live order statuses.</p>
+              </div>
+
+              {/* Tab Selector */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', background: 'var(--bg-surface)', padding: '4px', borderRadius: '6px', marginBottom: '1.5rem' }}>
+                <button className="btn btn-sm" style={{ background: mode === 'login' ? 'var(--gold-primary)' : 'transparent', color: mode === 'login' ? '#000' : '#fff' }} onClick={() => setMode('login')}>Sign In</button>
+                <button className="btn btn-sm" style={{ background: mode === 'register' ? 'var(--gold-primary)' : 'transparent', color: mode === 'register' ? '#000' : '#fff' }} onClick={() => setMode('register')}>Register</button>
+              </div>
+
+              <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {mode === 'register' && (
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>FULL NAME</label>
+                    <input type="text" required placeholder="Priya Sharma" value={name} onChange={e => setName(e.target.value)} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }} />
+                  </div>
+                )}
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>EMAIL ADDRESS</label>
+                  <input type="email" required placeholder="name@example.com" value={email} onChange={e => setEmail(e.target.value)} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }} />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.72rem', color: 'var(--gold-light)', fontWeight: 700, marginBottom: '0.3rem' }}>PASSWORD</label>
+                  <input type="password" required placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} style={{ width: '100%', background: 'var(--bg-main)', border: '1px solid var(--border-glass)', padding: '0.6rem', color: '#fff', borderRadius: '4px' }} />
+                </div>
+
+                <button type="submit" className="btn btn-gold" style={{ width: '100%', marginTop: '0.5rem' }}>
+                  {mode === 'login' ? 'Sign In' : 'Create Account'}
+                </button>
+              </form>
+
+              <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid var(--border-glass)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                <button className="btn btn-secondary btn-sm" style={{ fontSize: '0.75rem' }} onClick={() => handleLogin('priya@example.com', 'password')}>Demo Customer</button>
+                <button className="btn btn-outline-gold btn-sm" style={{ fontSize: '0.75rem' }} onClick={() => handleLogin('admin@aromaindiangrill.com', 'admin')}>Demo Admin</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- Mount application ---
+    const rootElement = document.getElementById('app-root');
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(<App />);
+
+  </script>
+</body>
+</html>
